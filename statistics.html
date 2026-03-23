@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Statistics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Statistics</h1>
+
+<button class="tab-btn" onclick="showTab('weekly')">Weekly Review</button>
+<button class="tab-btn" onclick="showTab('practice')">AI Practice</button>
+
+<div id="weekly" class="content">
+  <h2>Week 1</h2>
+  <p>Descriptive Statistics</p>
+
+  <h2>Week 2</h2>
+  <p>Probability</p>
+
+  <h2>Week 3</h2>
+  <p>Regression</p>
+</div>
+
+<div id="practice" class="content" style="display:none;">
+  <button onclick="generateQuestion()">Generate Question</button>
+  <p id="question"></p>
+</div>
+
+<script>
+function showTab(tab) {
+  document.getElementById("weekly").style.display = "none";
+  document.getElementById("practice").style.display = "none";
+  document.getElementById(tab).style.display = "block";
+}
+
+function generateQuestion() {
+  document.getElementById("question").innerText =
+    "What is mean and standard deviation?";
+}
+</script>
+
+</body>
+</html>
