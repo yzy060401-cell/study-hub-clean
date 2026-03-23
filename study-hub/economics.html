@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Economics | Business & Health</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="econ-page">
+
+  <div class="course-shell">
+
+    <div class="course-topbar">
+      <a href="index.html" class="mini-back">← Back to Search</a>
+      <span class="course-tag">Economics</span>
+    </div>
+
+    <section class="course-hero">
+      <div class="course-hero-badge">GBSH0046 · Principles & Practices of Economics</div>
+      <h1 class="course-title">Economics</h1>
+      <p class="course-subtitle">
+        Weekly Review + AI Practice
+        <br>
+        课程周复习 + AI练题
+      </p>
+    </section>
+
+    <section class="course-main-nav">
+      <button class="course-nav-btn active-nav" onclick="showMainSection('weeklySection', this)">Weekly Review</button>
+      <button class="course-nav-btn" onclick="showMainSection('practiceSection', this)">AI Practice</button>
+    </section>
+
+    <!-- WEEKLY REVIEW -->
+    <section id="weeklySection" class="main-section">
+
+      <div class="section-intro-card">
+        <h2>Weekly Review</h2>
+        <p>
+          Choose a week below to review key concepts, core logic, and exam-focused takeaways.
+          <br>
+          选择下方周次，查看核心概念、逻辑框架和考试重点。
+        </p>
+      </div>
+
+      <div class="week-grid">
+        <button class="week-chip active-week" onclick="showWeek('week1', this)">Week 1</button>
+        <button class="week-chip" onclick="showWeek('week2', this)">Week 2</button>
+        <button class="week-chip" onclick="showWeek('week3', this)">Week 3</button>
+        <button class="week-chip" onclick="showWeek('week4', this)">Week 4</button>
+        <button class="week-chip" onclick="showWeek('week5', this)">Week 5</button>
+        <button class="week-chip" onclick="showWeek('week6', this)">Week 6</button>
+        <button class="week-chip" onclick="showWeek('week7', this)">Week 7</button>
+        <button class="week-chip" onclick="showWeek('week8', this)">Week 8</button>
+        <button class="week-chip" onclick="showWeek('week9', this)">Week 9</button>
+        <button class="week-chip" onclick="showWeek('week10', this)">Week 10</button>
+      </div>
+
+      <!-- WEEK 1 -->
+      <div id="week1" class="week-panel" style="display:block;">
+        <div id="week1-gdp"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 1</div>
+          <h2>Climate Change, Data & Economic Thinking</h2>
+          <p>气候变化、数据分析与经济学思维入门</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Temperature anomaly ｜ 温度异常值</li>
+              <li>Trend over time ｜ 时间趋势</li>
+              <li>Distribution shift ｜ 分布整体移动</li>
+              <li>CO₂ and temperature ｜ 二氧化碳与气温</li>
+              <li>Correlation vs causation ｜ 相关性与因果性</li>
+              <li>Spurious correlation ｜ 伪相关</li>
+              <li>GDP as a measure ｜ GDP 作为衡量指标</li>
+              <li>Well-being beyond output ｜ 超越产出的福祉理解</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Temperature anomaly compares current temperature with a long-run average. ｜ 温度异常值用来比较当前温度与长期平均值。</li>
+              <li>Long-run data suggests warming is not random short-term fluctuation. ｜ 长期数据说明变暖不是短期随机波动。</li>
+              <li>Climate evidence is stronger when we examine trend, variation, and distribution together. ｜ 当我们同时看趋势、波动和分布时，证据更强。</li>
+              <li>Economic interpretation often depends on how we measure change over time. ｜ 经济学解释往往依赖于我们如何衡量时间中的变化。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Correlation means two variables move together. ｜ 相关性表示两个变量一起变化。</li>
+              <li>Causation means one variable produces change in another. ｜ 因果性表示一个变量导致另一个变量变化。</li>
+              <li>Economists must be careful not to confuse the two. ｜ 经济学分析必须避免把两者混淆。</li>
+              <li>GDP is useful, but not enough to fully describe social welfare. ｜ GDP 有用，但不足以完整描述社会福利。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Do not just say “temperature rises, so climate change is real.”
+              A stronger answer explains trend, compares time scales, and notes that correlation alone does not prove causation.
+            </p>
+            <p>
+              不要只写“温度上升，所以气候变化存在”。
+              更好的答案要解释长期趋势、时间尺度差异，并指出相关性不自动等于因果关系。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 2 -->
+      <div id="week2" class="week-panel">
+        <div id="week2-cash"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 2</div>
+          <h2>GDP, Well-being, Economic Models & Causality</h2>
+          <p>GDP、幸福感、经济模式与因果推断</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>GDP ｜ 国内生产总值</li>
+              <li>Productivity ｜ 生产率</li>
+              <li>Externalities ｜ 外部性</li>
+              <li>Well-being ｜ 幸福感 / 福祉</li>
+              <li>Natural experiment ｜ 自然实验</li>
+              <li>Difference-in-differences ｜ 双重差分</li>
+              <li>Money creation ｜ 货币创造</li>
+              <li>Private vs bank-created money ｜ 私人借贷与银行创造货币</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Economic Comparison</h3>
+            <ul>
+              <li>Aurea prioritises time, community, and life satisfaction. ｜ Aurea 重视时间、社群和生活满意度。</li>
+              <li>Pyrgus prioritises output, profit, and industrial growth. ｜ Pyrgus 重视产出、利润和工业增长。</li>
+              <li>High GDP does not automatically mean a better society. ｜ 高GDP并不自动意味着更好的社会。</li>
+              <li>Different systems reflect different social values. ｜ 不同经济系统反映不同的社会价值观。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Economic Models</h3>
+            <ul>
+              <li>Some systems are based on reciprocity and redistribution. ｜ 有些经济建立在互惠和再分配上。</li>
+              <li>Some systems are designed to avoid state control. ｜ 有些经济安排是为了逃避国家控制。</li>
+              <li>England is best represented by agrarian capitalism and market dependence. ｜ 英格兰最符合农业资本主义和市场依赖模式。</li>
+              <li>Land, property, and surplus are organised differently across models. ｜ 土地、产权和剩余分配在不同模式中组织方式不同。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Cash / Money Logic</h3>
+            <ul>
+              <li>A private loan transfers existing money. ｜ 私人借贷转移的是已存在的货币。</li>
+              <li>A bank loan can create new money electronically. ｜ 银行贷款可以通过电子记账创造新货币。</li>
+              <li>This helps explain why money in the economy can expand. ｜ 这解释了为什么经济中的货币总量会扩张。</li>
+              <li>Interest raises repayment obligations beyond the original principal. ｜ 利息会使偿还金额高于原始本金。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Week 2 is not only about “which economy is richer.” It is about values, measurement, institutions, and whether output should be the only metric of success.
+            </p>
+            <p>
+              第2周不只是“哪个经济体更有钱”，而是关于价值判断、衡量标准、制度安排，以及产出是否应是唯一成功标准。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 3 -->
+      <div id="week3" class="week-panel">
+        <div id="week3-supply"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 3</div>
+          <h2>Supply, Demand, Equilibrium & Identification</h2>
+          <p>供给、需求、均衡与识别问题</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Demand curve ｜ 需求曲线</li>
+              <li>Supply curve ｜ 供给曲线</li>
+              <li>Equilibrium price ｜ 均衡价格</li>
+              <li>Exogenous shock ｜ 外生冲击</li>
+              <li>Endogenous movement ｜ 内生变动</li>
+              <li>Simultaneity ｜ 同时性问题</li>
+              <li>Elasticity ｜ 弹性</li>
+              <li>Natural log transformation ｜ 对数变换</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Demand slopes downward because quantity demanded falls when price rises. ｜ 需求曲线向下，因为价格越高需求量越低。</li>
+              <li>Supply slopes upward because firms are willing to produce more at higher prices. ｜ 供给曲线向上，因为高价格下企业更愿意生产。</li>
+              <li>Equilibrium occurs where supply equals demand. ｜ 均衡出现在供需相等的地方。</li>
+              <li>Shifts in curves matter more than simple movement along a curve. ｜ 曲线移动比沿曲线移动更关键。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Why Real Data Is Hard</h3>
+            <ul>
+              <li>Observed price and quantity are jointly determined. ｜ 实际观察到的价格和数量是同时决定的。</li>
+              <li>This makes it hard to identify the true supply or demand curve. ｜ 这使得真实供给或需求曲线难以识别。</li>
+              <li>Economists use exogenous shocks to separate them. ｜ 经济学家用外生冲击来帮助识别。</li>
+              <li>Watermelon data is used to show how identification works. ｜ 西瓜市场数据被用来展示识别问题。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Logs</h3>
+            <ul>
+              <li>Natural log is useful for transforming data. ｜ 自然对数可用于数据转换。</li>
+              <li>In a log-log model, coefficients can be interpreted as elasticities. ｜ 在双对数模型中，系数可解释为弹性。</li>
+              <li>Graphs help economists interpret equations visually. ｜ 图像帮助经济学家从视觉上理解方程。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Always distinguish between a movement along a curve and a shift of a curve.
+              This is one of the most common mistakes in early microeconomics.
+            </p>
+            <p>
+              一定要区分“沿曲线移动”和“整条曲线移动”。
+              这是微观经济学最常见的错误之一。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 4 -->
+      <div id="week4" class="week-panel">
+        <div id="week4-inflation"></div>
+        <div id="week4-unemployment"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 4</div>
+          <h2>Inflation, Unemployment & Well-being</h2>
+          <p>通胀、失业与幸福感</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>CPI ｜ 消费者价格指数</li>
+              <li>GDP deflator ｜ GDP平减指数</li>
+              <li>Inflation / deflation / disinflation ｜ 通胀 / 通缩 / 通胀回落</li>
+              <li>Aggregate demand ｜ 总需求</li>
+              <li>Phillips curve ｜ 菲利普斯曲线</li>
+              <li>Life satisfaction ｜ 生活满意度</li>
+              <li>Confidence interval ｜ 置信区间</li>
+              <li>Correlation coefficient ｜ 相关系数</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Inflation is a general rise in prices. ｜ 通胀是总体价格水平上升。</li>
+              <li>Unemployment matters not only for income, but also for dignity and well-being. ｜ 失业不仅影响收入，也影响尊严和幸福感。</li>
+              <li>Life satisfaction is often used as a proxy for non-monetary costs. ｜ 生活满意度常被用作非货币成本的代理指标。</li>
+              <li>Economic data can help estimate social costs we cannot directly observe. ｜ 经济数据可以帮助估计那些无法直接观察的社会成本。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Policy</h3>
+            <ul>
+              <li>Fiscal policy uses taxes, spending, and transfers. ｜ 财政政策通过税收、支出和转移支付发挥作用。</li>
+              <li>Monetary policy mainly uses the interest rate. ｜ 货币政策主要通过利率发挥作用。</li>
+              <li>Negative demand shocks often require expansionary policy. ｜ 负向需求冲击往往需要扩张性政策。</li>
+              <li>Social norms can affect how unemployment changes life satisfaction. ｜ 社会规范会影响失业如何改变生活满意度。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              CPI and GDP deflator are not the same: CPI focuses on consumer purchases, while GDP deflator focuses on domestic production.
+            </p>
+            <p>
+              CPI 和 GDP 平减指数不一样：CPI 关注消费者购买，GDP 平减指数关注国内生产。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 5 -->
+      <div id="week5" class="week-panel">
+        <div id="week5-labour"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 5</div>
+          <h2>Firms, Labour, Wages & Employment Rent</h2>
+          <p>企业、劳动、工资与就业租</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Profit maximisation ｜ 利润最大化</li>
+              <li>Fixed / variable / marginal cost ｜ 固定 / 可变 / 边际成本</li>
+              <li>Reservation wage ｜ 保留工资</li>
+              <li>Employment rent ｜ 就业租</li>
+              <li>Principal-agent problem ｜ 委托代理问题</li>
+              <li>Labour productivity ｜ 劳动生产率</li>
+              <li>Real wage ｜ 实际工资</li>
+              <li>Economies of scale ｜ 规模经济</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Firm Decisions</h3>
+            <ul>
+              <li>Marketing focuses on price and quantity. ｜ 市场部门关注价格和数量。</li>
+              <li>HR focuses on wage-setting and labour discipline. ｜ 人力部门关注工资与劳动管理。</li>
+              <li>Profit-maximising output is chosen where the relevant conditions are satisfied. ｜ 企业在满足利润最大化条件时选择最优产量。</li>
+              <li>Costs shape how firms behave in markets. ｜ 成本结构决定企业在市场中的行为。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Labour Market</h3>
+            <ul>
+              <li>Reservation wage is the minimum wage a worker accepts. ｜ 保留工资是劳动者愿意接受的最低工资。</li>
+              <li>Employment rent is the extra benefit of keeping the job. ｜ 就业租是保住工作的额外收益。</li>
+              <li>Better benefits and worse outside options increase employment rent. ｜ 福利更好、外部选择更差时，就业租更高。</li>
+              <li>Monitoring and incentives matter because effort is not always observable. ｜ 监督和激励很重要，因为劳动努力并不总是可观察的。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              A high wage does not automatically mean a high employment rent.
+              You must compare the value of the job with the value of the next-best option.
+            </p>
+            <p>
+              高工资不一定意味着高就业租。
+              关键是比较这份工作与次优选择之间的差异。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 6 -->
+      <div id="week6" class="week-panel">
+        <div id="week6-inequality"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 6</div>
+          <h2>Inequality, Lorenz Curves & Gini</h2>
+          <p>不平等、洛伦兹曲线与基尼系数</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Income inequality ｜ 收入不平等</li>
+              <li>Wealth inequality ｜ 财富不平等</li>
+              <li>Lorenz curve ｜ 洛伦兹曲线</li>
+              <li>Gini coefficient ｜ 基尼系数</li>
+              <li>Redistribution ｜ 再分配</li>
+              <li>Predistribution ｜ 事前分配</li>
+              <li>Categorical inequality ｜ 类别型不平等</li>
+              <li>Intergenerational inequality ｜ 代际不平等</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Wealth is usually more unequal than income. ｜ 财富通常比收入分布更不均。</li>
+              <li>Disposable income is often more equal because of taxes and transfers. ｜ 由于税收和转移支付，可支配收入通常更平均。</li>
+              <li>The farther the Lorenz curve is from equality, the greater inequality is. ｜ 洛伦兹曲线离完全平等线越远，不平等越严重。</li>
+              <li>Inequality can be measured, compared, and debated. ｜ 不平等既可以测量，也可以比较和争论。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Types of Inequality</h3>
+            <ul>
+              <li>Categorical inequality ｜ 类别型不平等</li>
+              <li>Inherited / intergenerational inequality ｜ 代际不平等</li>
+              <li>Within-country and between-country inequality ｜ 国内与国别间不平等</li>
+              <li>Wealth and income do not move exactly the same way over time. ｜ 财富和收入不平等随时间的变化并不完全一致。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Not all inequality is judged equally unfair.
+              A strong answer explains not just how much inequality exists, but where it comes from and how policy can address it.
+            </p>
+            <p>
+              并非所有不平等都被视为同样不公平。
+              好答案不仅要说明不平等有多严重，还要解释其来源及政策应对方式。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 7 -->
+      <div id="week7" class="week-panel">
+        <div id="week7-game"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 7</div>
+          <h2>Game Theory, Nash Equilibrium & Prisoners’ Dilemma</h2>
+          <p>博弈论、纳什均衡与囚徒困境</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Players ｜ 参与者</li>
+              <li>Strategies ｜ 策略</li>
+              <li>Payoffs ｜ 收益</li>
+              <li>Best response ｜ 最佳回应</li>
+              <li>Nash equilibrium ｜ 纳什均衡</li>
+              <li>Dominant strategy ｜ 占优策略</li>
+              <li>Mixed strategy ｜ 混合策略</li>
+              <li>Pareto efficiency ｜ 帕累托效率</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>A Nash equilibrium is self-enforcing. ｜ 纳什均衡是自我维持的。</li>
+              <li>A dominant strategy is best regardless of what the other player does. ｜ 占优策略是不管对方怎么做都最优的策略。</li>
+              <li>Strategic interaction means outcomes depend on others’ actions too. ｜ 战略互动意味着结果取决于他人的行动。</li>
+              <li>In many games, individually rational choices can lead to poor collective outcomes. ｜ 在许多博弈中，个体理性选择会导致糟糕的集体结果。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Prisoners’ Dilemma</h3>
+            <ul>
+              <li>Individual incentives can conflict with the common good. ｜ 个人激励可能与集体利益冲突。</li>
+              <li>The Nash equilibrium can be inefficient. ｜ 纳什均衡可能是低效率的。</li>
+              <li>Pareto-efficient outcomes are not always chosen. ｜ 帕累托有效结果不一定会被选择。</li>
+              <li>Game type depends on payoff structure. ｜ 博弈类型取决于收益结构。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Do not memorise only the definition.
+              You need to read a payoff matrix, identify best responses, and explain why an outcome is or is not efficient.
+            </p>
+            <p>
+              不要只背定义。
+              你需要会读收益矩阵、找最佳回应，并解释为什么某个结果有效率或无效率。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 8 -->
+      <div id="week8" class="week-panel">
+        <div id="week8-monopoly"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 8</div>
+          <h2>Market Structure, Monopoly & Market Failure</h2>
+          <p>市场结构、垄断与市场失灵</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Perfect competition ｜ 完全竞争</li>
+              <li>Monopoly ｜ 垄断</li>
+              <li>Oligopoly ｜ 寡头</li>
+              <li>Monopolistic competition ｜ 垄断竞争</li>
+              <li>Deadweight loss ｜ 无谓损失</li>
+              <li>Market failure ｜ 市场失灵</li>
+              <li>Free riding ｜ 搭便车</li>
+              <li>Asymmetric information ｜ 信息不对称</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Perfect competition is the efficiency benchmark. ｜ 完全竞争是效率基准。</li>
+              <li>A monopolist restricts output and raises price. ｜ 垄断者会限制产量并提高价格。</li>
+              <li>Monopoly creates deadweight loss because some mutually beneficial trades do not happen. ｜ 垄断会带来无谓损失，因为一些本可实现的交易消失了。</li>
+              <li>Market structure affects incentives, welfare, and pricing power. ｜ 市场结构会影响激励、福利和定价权。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Further Structures</h3>
+            <ul>
+              <li>Oligopoly involves strategic interaction between few firms. ｜ 寡头市场中少数企业相互博弈。</li>
+              <li>Monopolistic competition combines many firms with product differentiation. ｜ 垄断竞争是多企业加产品差异化。</li>
+              <li>Healthcare markets often contain market power and imperfect competition. ｜ 医疗市场常常存在市场力量和不完全竞争。</li>
+              <li>Bertrand and Cournot are common oligopoly models. ｜ Bertrand 和 Cournot 是常见寡头模型。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              When comparing perfect competition and monopoly, always talk about price, output, surplus, and deadweight loss together.
+            </p>
+            <p>
+              比较完全竞争和垄断时，一定要把价格、产量、剩余和无谓损失放在一起说。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 9 -->
+      <div id="week9" class="week-panel">
+        <div id="week9-commons"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 9</div>
+          <h2>Commons, Governance & Economic Evaluation</h2>
+          <p>公地、治理与经济评价</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Private / public / club / common goods ｜ 私人物品 / 公共物品 / 俱乐部物品 / 公地物品</li>
+              <li>Tragedy of the commons ｜ 公地悲剧</li>
+              <li>Free riding ｜ 搭便车</li>
+              <li>Ostrom self-governance ｜ Ostrom自组织治理</li>
+              <li>WTP ｜ 支付意愿</li>
+              <li>Cost-benefit analysis ｜ 成本收益分析</li>
+              <li>Externalities ｜ 外部性</li>
+              <li>Tax and markets ｜ 税收与市场起源</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Common goods are rival but non-excludable. ｜ 公地物品具有竞争性但不可排他。</li>
+              <li>Mainstream solutions often contrast market and state solutions. ｜ 主流经济学常把市场方案和国家方案对立起来。</li>
+              <li>Ostrom shows that communities can also self-organise. ｜ Ostrom 说明社群也可能自我组织治理。</li>
+              <li>Economic organisation is shaped by institutions, not just markets. ｜ 经济组织形式不仅由市场决定，也由制度决定。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Economic Evaluation</h3>
+            <ul>
+              <li>Governments often compare alternatives through costs and benefits. ｜ 政府常通过成本与收益比较不同方案。</li>
+              <li>WTP is used to estimate benefits. ｜ 支付意愿用于估计收益。</li>
+              <li>CBA tries to guide public decisions using economic valuation. ｜ 成本收益分析试图用经济价值引导公共决策。</li>
+              <li>Some goods with positive externalities may justify state involvement. ｜ 一些具有正外部性的物品可能需要国家介入。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Week 9 is not only about “commons are overused.”
+              It is also about who governs resources, how rules emerge, and whether markets are natural or historically constructed.
+            </p>
+            <p>
+              第9周不只是“公地会被过度使用”。
+              它还讨论谁来治理资源、规则如何形成，以及市场究竟是不是自然形成的。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 10 -->
+      <div id="week10" class="week-panel">
+        <div id="week10-revision"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 10</div>
+          <h2>Revision & Mock Exam Logic</h2>
+          <p>总复习与模拟题逻辑</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>What This Week Does</h3>
+            <ul>
+              <li>Reviews the previous 9 lectures. ｜ 回顾前9周内容。</li>
+              <li>Uses mixed practice questions to test understanding. ｜ 通过混合练习题检测理解。</li>
+              <li>Connects concepts across weeks. ｜ 把不同周的知识串联起来。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>High-Frequency Topics</h3>
+            <ul>
+              <li>Competitive equilibrium ｜ 竞争均衡</li>
+              <li>CPI and inflation ｜ CPI与通胀</li>
+              <li>Employment rent ｜ 就业租</li>
+              <li>Commons and Ostrom ｜ 公地与Ostrom</li>
+              <li>Nash equilibrium ｜ 纳什均衡</li>
+              <li>Monopoly and deadweight loss ｜ 垄断与无谓损失</li>
+              <li>Money creation ｜ 货币创造</li>
+              <li>Supply and demand shifts ｜ 供需曲线移动</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Revision Strategy</h3>
+            <ul>
+              <li>Do not revise week by week only; revise by theme. ｜ 不要只按周复习，也要按主题复习。</li>
+              <li>Practice diagrams, definitions, and applied MCQs together. ｜ 要把图、定义和应用选择题一起练。</li>
+              <li>Look for repeated logic: incentives, efficiency, institutions, and welfare. ｜ 重点寻找重复出现的逻辑：激励、效率、制度与福利。</li>
+              <li>Mock questions reveal which ideas are repeatedly tested. ｜ 模拟题能显示哪些概念是高频考点。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              The final exam rewards connections.
+              A strong answer often links market structure, incentives, efficiency, and fairness instead of treating each idea in isolation.
+            </p>
+            <p>
+              期末考试奖励“连接能力”。
+              强答案通常会把市场结构、激励、效率和公平联系起来，而不是各讲各的。
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- AI PRACTICE -->
+    <section id="practiceSection" class="main-section" style="display:none;">
+      <div class="section-intro-card">
+        <h2>AI Practice</h2>
+        <p>
+          Generate a 10-question Economics quiz with instant checking.
+          <br>
+          生成 10 道经济学练习题，并即时判断对错。
+        </p>
+      </div>
+
+      <div class="practice-card">
+        <div class="quiz-topbar">
+          <button class="generate-btn" onclick="startQuiz()">Start 10-Question Quiz</button>
+          <div id="quizMeta" class="quiz-meta">Ready to practise · 准备开始练习</div>
+        </div>
+
+        <div id="quizContainer" class="quiz-container">
+          <div class="quiz-empty-state">
+            <div class="quiz-empty-icon">◎</div>
+            <p>Click the button to generate your quiz.</p>
+            <p>点击按钮生成你的练习题。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="course-footer">
+      Built by Bucky Yue
+    </footer>
+
+  </div>
+
+  <script>
+    let currentQuiz = [];
+    let currentQuestionIndex = 0;
+    let currentScore = 0;
+    let questionLocked = false;
+
+    function showMainSection(sectionId, btn) {
+      document.getElementById("weeklySection").style.display = "none";
+      document.getElementById("practiceSection").style.display = "none";
+      document.getElementById(sectionId).style.display = "block";
+
+      const navBtns = document.querySelectorAll(".course-nav-btn");
+      navBtns.forEach(button => button.classList.remove("active-nav"));
+      if (btn) btn.classList.add("active-nav");
+    }
+
+    function showWeek(weekId, btn) {
+      const allWeeks = document.querySelectorAll(".week-panel");
+      allWeeks.forEach(week => week.style.display = "none");
+
+      const targetWeek = document.getElementById(weekId);
+      if (targetWeek) {
+        targetWeek.style.display = "block";
+      }
+
+      const weekBtns = document.querySelectorAll(".week-chip");
+      weekBtns.forEach(button => button.classList.remove("active-week"));
+      if (btn) btn.classList.add("active-week");
+    }
+
+    async function startQuiz() {
+      const quizContainer = document.getElementById("quizContainer");
+      const quizMeta = document.getElementById("quizMeta");
+
+      quizContainer.innerHTML = `
+        <div class="quiz-loading-card">
+          <div class="quiz-loading-spinner"></div>
+          <p>Generating your 10-question quiz...</p>
+          <p>正在生成 10 道练习题...</p>
+        </div>
+      `;
+
+      quizMeta.innerText = "Generating quiz...";
+
+      try {
+        const response = await fetch("http://localhost:3000/api/generate-quiz", {
+          method: "POST"
+        });
+
+        const data = await response.json();
+
+        if (!data.questions || !Array.isArray(data.questions)) {
+          throw new Error("Invalid quiz response");
+        }
+
+        currentQuiz = data.questions;
+        currentQuestionIndex = 0;
+        currentScore = 0;
+        questionLocked = false;
+
+        renderQuestion();
+      } catch (error) {
+        console.error(error);
+        quizContainer.innerHTML = `
+          <div class="quiz-error-card">
+            <p>Failed to generate quiz.</p>
+            <p>生成题目失败。</p>
+          </div>
+        `;
+        quizMeta.innerText = "Quiz generation failed";
+      }
+    }
+
+    function renderQuestion() {
+      const quizContainer = document.getElementById("quizContainer");
+      const quizMeta = document.getElementById("quizMeta");
+
+      if (!currentQuiz.length) return;
+
+      if (currentQuestionIndex >= currentQuiz.length) {
+        quizContainer.innerHTML = `
+          <div class="quiz-result-card">
+            <div class="result-ring">${currentScore}/${currentQuiz.length}</div>
+            <h3>Quiz Complete</h3>
+            <p>You answered ${currentScore} out of ${currentQuiz.length} correctly.</p>
+            <p>你答对了 ${currentScore} / ${currentQuiz.length} 题。</p>
+            <button class="next-btn" onclick="startQuiz()">Try Another Quiz</button>
+          </div>
+        `;
+        quizMeta.innerText = `Finished · Score ${currentScore}/${currentQuiz.length}`;
+        return;
+      }
+
+      const q = currentQuiz[currentQuestionIndex];
+      questionLocked = false;
+
+      quizMeta.innerText = `Question ${currentQuestionIndex + 1} of ${currentQuiz.length} · Score ${currentScore}`;
+
+      quizContainer.innerHTML = `
+        <div class="quiz-question-card">
+          <div class="quiz-progress">Q${currentQuestionIndex + 1} / ${currentQuiz.length}</div>
+
+          <h3 class="quiz-question-title">${q.question}</h3>
+          <p class="quiz-question-zh">${q.questionZh || ""}</p>
+
+          <div class="quiz-options" id="quizOptions">
+            ${q.options.map(option => `
+              <button class="option-btn" onclick="selectAnswer('${option.key}')">
+                <span class="option-key">${option.key}</span>
+                <span class="option-text">${option.text}</span>
+              </button>
+            `).join("")}
+          </div>
+
+          <div class="quiz-feedback-row">
+            <div id="feedbackText" class="feedback-text">Choose one option · 请选择一个答案</div>
+            <div id="feedbackBadge" class="feedback-badge neutral-badge">…</div>
+          </div>
+
+          <div id="explanationBox" class="explanation-box" style="display:none;"></div>
+
+          <div class="quiz-actions">
+            <button id="nextBtn" class="next-btn" style="display:none;" onclick="goNextQuestion()">Next Question</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function selectAnswer(selectedKey) {
+      if (questionLocked) return;
+
+      questionLocked = true;
+
+      const q = currentQuiz[currentQuestionIndex];
+      const correctKey = q.correctAnswer;
+      const optionButtons = document.querySelectorAll(".option-btn");
+      const feedbackText = document.getElementById("feedbackText");
+      const feedbackBadge = document.getElementById("feedbackBadge");
+      const explanationBox = document.getElementById("explanationBox");
+      const nextBtn = document.getElementById("nextBtn");
+
+      optionButtons.forEach(button => {
+        button.disabled = true;
+        const key = button.querySelector(".option-key").innerText.trim();
+
+        if (key === correctKey) {
+          button.classList.add("correct-option");
+        }
+
+        if (key === selectedKey && key !== correctKey) {
+          button.classList.add("wrong-option");
+        }
+      });
+
+      if (selectedKey === correctKey) {
+        currentScore += 1;
+        feedbackText.innerText = "Correct · 答对了";
+        feedbackBadge.innerText = "✓";
+        feedbackBadge.className = "feedback-badge correct-badge";
+      } else {
+        feedbackText.innerText = `Incorrect · 正确答案是 ${correctKey}`;
+        feedbackBadge.innerText = "✕";
+        feedbackBadge.className = "feedback-badge wrong-badge";
+      }
+
+      explanationBox.style.display = "block";
+      explanationBox.innerHTML = `
+        <strong>Explanation:</strong> ${q.explanation || ""}
+        <br><br>
+        <strong>中文解释：</strong>${q.explanationZh || ""}
+      `;
+
+      nextBtn.style.display = "inline-block";
+    }
+
+    function goNextQuestion() {
+      currentQuestionIndex += 1;
+      renderQuestion();
+    }
+
+    window.addEventListener("DOMContentLoaded", function () {
+      const hash = window.location.hash;
+      if (!hash) return;
+
+      const map = {
+        "#week1-gdp": "week1",
+        "#week2-cash": "week2",
+        "#week3-supply": "week3",
+        "#week4-inflation": "week4",
+        "#week4-unemployment": "week4",
+        "#week5-labour": "week5",
+        "#week6-inequality": "week6",
+        "#week7-game": "week7",
+        "#week8-monopoly": "week8",
+        "#week9-commons": "week9",
+        "#week10-revision": "week10"
+      };
+
+      const targetWeek = map[hash];
+      if (!targetWeek) return;
+
+      const weeklySection = document.getElementById("weeklySection");
+      const practiceSection = document.getElementById("practiceSection");
+
+      if (weeklySection) weeklySection.style.display = "block";
+      if (practiceSection) practiceSection.style.display = "none";
+
+      const navBtns = document.querySelectorAll(".course-nav-btn");
+      navBtns.forEach(button => button.classList.remove("active-nav"));
+      if (navBtns[0]) navBtns[0].classList.add("active-nav");
+
+      const allWeeks = document.querySelectorAll(".week-panel");
+      allWeeks.forEach(week => week.style.display = "none");
+
+      const targetWeekPanel = document.getElementById(targetWeek);
+      if (targetWeekPanel) {
+        targetWeekPanel.style.display = "block";
+      }
+
+      const weekBtns = document.querySelectorAll(".week-chip");
+      weekBtns.forEach(button => button.classList.remove("active-week"));
+
+      const weekIndexMap = {
+        "week1": 0,
+        "week2": 1,
+        "week3": 2,
+        "week4": 3,
+        "week5": 4,
+        "week6": 5,
+        "week7": 6,
+        "week8": 7,
+        "week9": 8,
+        "week10": 9
+      };
+
+      const btnIndex = weekIndexMap[targetWeek];
+      if (weekBtns[btnIndex]) {
+        weekBtns[btnIndex].classList.add("active-week");
+      }
+
+      setTimeout(() => {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 250);
+    });
+  </script>
+
+</body>
+</html>

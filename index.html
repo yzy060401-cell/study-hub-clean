@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UCL Study AI Hub</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- 稳定版 PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h2>UCL Study AI Hub</h2>
+
+      <button class="nav-btn" onclick="showSection('home')">Home / 首页</button>
+      <button class="nav-btn" onclick="showSection('courses')">Course Library / 课程库</button>
+      <button class="nav-btn" onclick="showSection('review')">Topic Review / 复习页</button>
+      <button class="nav-btn" onclick="showSection('admin')">Admin Panel / 管理页</button>
+    </aside>
+
+    <main class="main-content">
+      <!-- Home -->
+      <section id="home" class="content-section">
+        <h1>Welcome to UCL Study AI Hub / 欢迎来到 UCL 学习平台</h1>
+        <p>This platform helps UCL students quickly find course content, revision points, and study materials.</p>
+        <p>这个平台帮助 UCL 学生快速查找课程内容、复习重点和学习资料。</p>
+
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search course or topic / 搜索课程或主题，例如 statistics week 8"
+          />
+          <button onclick="searchCourse()">Search / 搜索</button>
+        </div>
+
+        <div id="searchResults" class="search-results"></div>
+      </section>
+
+      <!-- Courses -->
+      <section id="courses" class="content-section hidden">
+        <h1>Course Library / 课程库</h1>
+
+        <div class="course-card">
+          <h3>GBSH0050 - Introduction to Statistics and Data Insights</h3>
+          <p>Browse topics by week and review key concepts.</p>
+          <p>按周查看主题并复习核心概念。</p>
+        </div>
+
+        <div class="course-card">
+          <h3>GBSH0047 - Reimagining Healthcare</h3>
+          <p>Access weekly themes, essay topics, and revision guidance.</p>
+          <p>查看每周主题、论文题目和复习指导。</p>
+        </div>
+      </section>
+
+      <!-- Review -->
+      <section id="review" class="content-section hidden">
+        <h1>Topic Review / 主题复习</h1>
+        <p>Detailed revision content for the selected topic will appear below.</p>
+        <p>所选主题的详细复习内容会显示在下方。</p>
+
+        <div class="review-box" id="reviewContent">
+          <h3>No topic selected yet / 尚未选择主题</h3>
+          <p>Please search for a topic on the Home page and select a result.</p>
+          <p>请先在首页搜索主题，然后打开对应结果。</p>
+        </div>
+
+        <div class="review-subbox">
+          <h4>AI Summary / AI 总结</h4>
+          <button id="aiSummaryBtn" onclick="generateAISummary()" disabled>
+            Generate AI Summary / 生成 AI 总结
+          </button>
+          <div id="aiSummaryResult" style="margin-top: 16px;"></div>
+        </div>
+      </section>
+
+      <!-- Admin -->
+      <section id="admin" class="content-section hidden">
+        <h1>Admin Panel / 管理面板</h1>
+        <p>Use this form to add new course content and generate bilingual revision output.</p>
+        <p>使用这个表单添加新的课程内容，并生成双语复习输出。</p>
+
+        <div class="admin-form">
+          <input type="text" id="subjectInput" placeholder="Subject / 课程，例如 Statistics" />
+          <input type="text" id="weekInput" placeholder="Week / 周次，例如 Week 8" />
+          <input type="text" id="topicInput" placeholder="Topic / 主题，例如 Linear Regression" />
+          <input type="text" id="lectureLinkInput" placeholder="Lecture Link / 课件链接" />
+
+          <div class="pdf-upload-box">
+            <label class="upload-title">Upload PDF / 上传 PDF</label>
+            <input type="file" id="pdfInput" accept="application/pdf" />
+            <button type="button" id="extractPdfBtn" onclick="extractPdfText()">
+              Extract PDF Text / 提取 PDF 文字
+            </button>
+            <div id="pdfStatus" class="pdf-status"></div>
+          </div>
+
+          <textarea
+            id="rawContentInput"
+            placeholder="Raw Content / 原始内容：把讲义、课件、课程文本贴在这里，或者先上传 PDF 再自动提取"
+          ></textarea>
+
+          <button onclick="addCourse()">Generate Summary / 生成总结</button>
+        </div>
+
+        <div id="adminMessage" class="admin-message"></div>
+      </section>
+
+      <footer class="footer">
+        UCL Study AI Hub · Built by Bucky Yue
+        <br />
+        由 Bucky Yue 构建
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
