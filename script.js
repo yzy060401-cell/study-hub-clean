@@ -1,174 +1,374 @@
+function normalizeQuery(text) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[&/,+()\-]/g, " ")
+    .replace(/\s+/g, " ");
+}
+
+function includesAny(query, keywords) {
+  return keywords.some(keyword => query.includes(keyword));
+}
+
 function searchCourse() {
   const searchInput = document.getElementById("search");
-  const query = searchInput.value.trim().toLowerCase();
+  const rawQuery = searchInput ? searchInput.value : "";
+  const query = normalizeQuery(rawQuery);
 
-  // ===== 课程名直达 =====
-  if (query === "economics" || query === "econ") {
+  if (!query) {
+    window.location.href = "courses.html";
+    return;
+  }
+
+  // ===== 课程直达 =====
+  if (includesAny(query, ["economics", "econ"])) {
     window.location.href = "economics.html";
     return;
   }
 
-  if (query === "statistics" || query === "stats" || query === "stat") {
+  if (includesAny(query, ["statistics", "stats", "stat"])) {
     window.location.href = "statistics.html";
     return;
   }
 
   if (
-    query === "finance" ||
-    query === "accounting" ||
-    query === "finance and accounting"
+    includesAny(query, [
+      "finance and accounting",
+      "finance accounting",
+      "finance",
+      "accounting",
+      "fa"
+    ])
   ) {
     window.location.href = "accounting.html";
     return;
   }
 
-  // ===== economics 关键词导航词典 =====
-  const keywordRoutes = [
+  // ===== Economics 智能关键词跳转 =====
+  const economicsRoutes = [
     {
+      target: "economics.html#week1-gdp",
       keywords: [
-        "opportunity cost",
+        "week 1",
+        "w1",
         "gdp",
+        "gross domestic product",
         "wellbeing",
-        "well-being",
+        "well being",
+        "climate",
         "climate change",
+        "temperature",
         "temperature anomaly",
+        "co2",
+        "carbon dioxide",
         "correlation",
         "causation",
-        "co2"
-      ],
-      target: "economics.html#week1-gdp"
+        "spurious correlation",
+        "opportunity cost",
+        "distribution shift"
+      ]
     },
     {
+      target: "economics.html#week2-cash",
       keywords: [
+        "week 2",
+        "w2",
         "cash",
         "cache",
         "money",
         "bank",
+        "banks",
         "loan",
+        "loans",
+        "bank loan",
         "private money",
         "common money",
-        "economic model",
+        "public money",
+        "money creation",
+        "create money",
+        "created money",
+        "difference in differences",
+        "difference in dif",
+        "diff in diff",
+        "did",
+        "rct",
+        "randomised controlled trial",
+        "randomized controlled trial",
+        "natural experiment",
         "aurea",
         "pyrgus",
-        "difference-in-differences",
-        "rct"
-      ],
-      target: "economics.html#week2-cash"
+        "economic model",
+        "economic models",
+        "england model",
+        "externalities and wellbeing"
+      ]
     },
     {
+      target: "economics.html#week3-supply",
       keywords: [
+        "week 3",
+        "w3",
         "supply",
         "demand",
+        "supply demand",
         "equilibrium",
         "elasticity",
+        "price elasticity",
         "shock",
+        "shocks",
         "exogenous",
         "endogenous",
         "simultaneity",
-        "watermelon"
-      ],
-      target: "economics.html#week3-supply"
+        "watermelon",
+        "watermelons",
+        "log",
+        "logs",
+        "natural log",
+        "ln",
+        "dummy variable",
+        "confidence interval demand supply",
+        "identify demand curve",
+        "identify supply curve"
+      ]
     },
     {
+      target: "economics.html#week4-inflation",
       keywords: [
+        "week 4",
+        "w4",
         "inflation",
         "cpi",
-        "gdp deflator"
-      ],
-      target: "economics.html#week4-inflation"
+        "gdp deflator",
+        "phillips curve",
+        "aggregate demand",
+        "ad curve",
+        "deflation",
+        "disinflation",
+        "price level",
+        "negative demand shock",
+        "fiscal policy",
+        "monetary policy",
+        "interest rate",
+        "bank of england"
+      ]
     },
     {
+      target: "economics.html#week4-unemployment",
       keywords: [
         "unemployment",
         "life satisfaction",
-        "well-being cost",
-        "disutility"
-      ],
-      target: "economics.html#week4-unemployment"
+        "well being cost",
+        "wellbeing cost",
+        "non monetary cost",
+        "non monetary costs",
+        "disutility",
+        "evs",
+        "european values study",
+        "employment status",
+        "subjective wellbeing",
+        "subjective well being",
+        "stigma",
+        "social norm unemployment"
+      ]
     },
     {
+      target: "economics.html#week5-labour",
       keywords: [
+        "week 5",
+        "w5",
         "labour",
         "labor",
+        "labour market",
+        "labor market",
+        "firm",
+        "firms",
         "reservation wage",
         "employment rent",
-        "firm",
-        "profit maximisation",
+        "principal agent",
         "principal-agent",
-        "wages"
-      ],
-      target: "economics.html#week5-labour"
+        "profit maximisation",
+        "profit maximization",
+        "wages",
+        "real wage",
+        "labour productivity",
+        "labor productivity",
+        "cost structure",
+        "marginal cost",
+        "average cost",
+        "fixed cost",
+        "variable cost",
+        "economies of scale",
+        "management practice",
+        "management score"
+      ]
     },
     {
+      target: "economics.html#week6-inequality",
       keywords: [
+        "week 6",
+        "w6",
         "inequality",
-        "gini",
-        "lorenz",
-        "wealth",
         "income inequality",
+        "wealth inequality",
+        "gini",
+        "gini coefficient",
+        "lorenz",
+        "lorenz curve",
         "redistribution",
-        "predistribution"
-      ],
-      target: "economics.html#week6-inequality"
+        "predistribution",
+        "categorical inequality",
+        "intergenerational inequality",
+        "wealth share",
+        "top 1",
+        "disposable income",
+        "fairness inequality"
+      ]
     },
     {
+      target: "economics.html#week7-game",
       keywords: [
-        "nash",
+        "week 7",
+        "w7",
         "game theory",
-        "prisoners",
-        "prisoner's dilemma",
+        "nash",
+        "nash equilibrium",
         "dominant strategy",
-        "pareto"
-      ],
-      target: "economics.html#week7-game"
+        "mixed strategy",
+        "best response",
+        "payoff matrix",
+        "prisoners dilemma",
+        "prisoner's dilemma",
+        "prisoners' dilemma",
+        "pareto",
+        "pareto efficient",
+        "pareto inefficiency",
+        "chicken game",
+        "stag hunt",
+        "hawk dove",
+        "dove",
+        "hawk"
+      ]
     },
     {
+      target: "economics.html#week8-monopoly",
       keywords: [
+        "week 8",
+        "w8",
         "monopoly",
-        "deadweight loss",
-        "market failure",
+        "perfect competition",
         "oligopoly",
         "bertrand",
         "cournot",
-        "perfect competition",
-        "monopolistic competition"
-      ],
-      target: "economics.html#week8-monopoly"
+        "monopolistic competition",
+        "market failure",
+        "deadweight loss",
+        "dwl",
+        "consumer surplus",
+        "producer surplus",
+        "market structure",
+        "price taker",
+        "price maker",
+        "free riding market failure",
+        "asymmetric information",
+        "public goods market failure"
+      ]
     },
     {
+      target: "economics.html#week9-commons",
       keywords: [
+        "week 9",
+        "w9",
         "commons",
+        "common goods",
+        "common good",
+        "public goods",
+        "public good",
+        "club goods",
+        "club good",
+        "private goods",
+        "private good",
+        "tragedy of the commons",
         "ostrom",
         "free riding",
         "free-riding",
-        "public goods",
-        "common goods",
-        "club goods",
+        "free rider",
         "wtp",
-        "cost-benefit analysis",
+        "willingness to pay",
+        "cost benefit analysis",
         "cba",
-        "tax and markets"
-      ],
-      target: "economics.html#week9-commons"
+        "economic evaluation",
+        "tax and markets",
+        "currency",
+        "graeber",
+        "alanya",
+        "fishery",
+        "fisheries",
+        "commons governance"
+      ]
     },
     {
+      target: "economics.html#week10-revision",
       keywords: [
+        "week 10",
+        "w10",
         "revision",
+        "revise",
+        "recap",
         "mock",
+        "mock exam",
         "exam",
-        "recap"
-      ],
-      target: "economics.html#week10-revision"
+        "final exam",
+        "revision strategy",
+        "high frequency topics"
+      ]
     }
   ];
 
-  for (const route of keywordRoutes) {
+  // 优先找“最相关”的 route：哪个匹配关键词数量最多
+  let bestRoute = null;
+  let bestScore = 0;
+
+  for (const route of economicsRoutes) {
+    let score = 0;
     for (const keyword of route.keywords) {
       if (query.includes(keyword)) {
-        window.location.href = route.target;
-        return;
+        score += keyword.length > 8 ? 2 : 1;
       }
     }
+    if (score > bestScore) {
+      bestScore = score;
+      bestRoute = route;
+    }
+  }
+
+  if (bestRoute) {
+    window.location.href = bestRoute.target;
+    return;
+  }
+
+  // ===== 兜底：部分模糊词默认进 economics =====
+  if (
+    includesAny(query, [
+      "gdp",
+      "inflation",
+      "unemployment",
+      "wage",
+      "wages",
+      "inequality",
+      "nash",
+      "monopoly",
+      "commons",
+      "ostrom",
+      "supply",
+      "demand",
+      "labour",
+      "labor",
+      "money",
+      "bank"
+    ])
+  ) {
+    window.location.href = "economics.html";
+    return;
   }
 
   // ===== 默认去 Browse 页面 =====
