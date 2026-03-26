@@ -14,6 +14,19 @@ function getCurrentTopic() {
 
 const CURRENT_TOPIC = getCurrentTopic();
 
+function getSelectedQuizCount() {
+  const countSelect = document.getElementById("quizCount");
+  const value = countSelect ? parseInt(countSelect.value, 10) : 10;
+
+  if (!Number.isFinite(value)) return 10;
+  return value;
+}
+
+function getSelectedFocusMode() {
+  const modeSelect = document.getElementById("focusMode");
+  return modeSelect ? modeSelect.value : "balanced";
+}
+
 function searchCourse() {
   const input = document.getElementById("search");
   if (!input) return;
@@ -25,7 +38,6 @@ function searchCourse() {
     return;
   }
 
-  // 课程直达
   if (
     query.includes("economics") ||
     query.includes("econ") ||
@@ -57,7 +69,6 @@ function searchCourse() {
     return;
   }
 
-  // Economics 关键词映射
   const economicsMap = {
     gdp: "economics.html#week1-gdp",
     climate: "economics.html#week1-gdp",
@@ -179,11 +190,14 @@ async function startQuiz() {
 
   if (!quizContainer || !quizMeta) return;
 
+  const selectedCount = getSelectedQuizCount();
+  const selectedMode = getSelectedFocusMode();
+
   quizContainer.innerHTML = `
     <div class="quiz-loading-card">
       <div class="quiz-loading-spinner"></div>
-      <p>Generating your quiz...</p>
-      <p>正在生成练习题...</p>
+      <p>Generating your ${selectedCount}-question quiz...</p>
+      <p>正在生成 ${selectedCount} 道练习题...</p>
     </div>
   `;
 
@@ -197,7 +211,8 @@ async function startQuiz() {
       },
       body: JSON.stringify({
         topic: CURRENT_TOPIC,
-        count: 10
+        count: selectedCount,
+        focusMode: selectedMode
       })
     });
 
