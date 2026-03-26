@@ -659,28 +659,54 @@
 
     </section>
 
-    <!-- AI PRACTICE -->
+      <!-- AI PRACTICE -->
     <section id="practiceSection" class="main-section" style="display:none;">
       <div class="section-intro-card">
         <h2>AI Practice</h2>
         <p>
-          Generate a 10-question Economics quiz with instant checking.
+          Generate 10, 20, 50, or 100 Economics questions with instant feedback and adaptive personalisation.
           <br>
-          生成 10 道经济学练习题，并即时判断对错。
+          生成 10、20、50 或 100 道经济学练习题，并根据你的薄弱点进行强化。
         </p>
+        <div id="memoryHint" class="quiz-subhint">
+          Adaptive mode is on. Local weak-topic tracking works automatically. If MEM0 is connected on the server, long-term personalisation will also be used.
+          <br>
+          自适应练题已开启。浏览器会自动记录你的薄弱点；如果服务器接入了 Mem0，还会启用长期个性化强化。
+        </div>
       </div>
 
       <div class="practice-card">
+        <div class="quiz-control-row">
+          <div class="quiz-control-group">
+            <label for="quizCount">Question Count</label>
+            <select id="quizCount" class="quiz-select">
+              <option value="10" selected>10 Questions</option>
+              <option value="20">20 Questions</option>
+              <option value="50">50 Questions</option>
+              <option value="100">100 Questions</option>
+            </select>
+          </div>
+
+          <div class="quiz-control-group">
+            <label for="focusMode">Quiz Mode</label>
+            <select id="focusMode" class="quiz-select">
+              <option value="balanced" selected>Balanced Mix</option>
+              <option value="weak">Focus Weak Areas</option>
+              <option value="random">More Random</option>
+            </select>
+          </div>
+        </div>
+
         <div class="quiz-topbar">
-          <button class="generate-btn" onclick="startQuiz()">Start 10-Question Quiz</button>
+          <button id="generateQuizBtn" class="generate-btn" onclick="startQuiz()">Generate Quiz</button>
           <div id="quizMeta" class="quiz-meta">Ready to practise · 准备开始练习</div>
         </div>
 
         <div id="quizContainer" class="quiz-container">
           <div class="quiz-empty-state">
             <div class="quiz-empty-icon">◎</div>
-            <p>Click the button to generate your quiz.</p>
-            <p>点击按钮生成你的练习题。</p>
+            <p>Choose your quiz size and click the button to generate a new set.</p>
+            <p>选择题目数量后点击按钮，生成一套新的练习题。</p>
           </div>
         </div>
       </div>
@@ -692,261 +718,6 @@
 
   </div>
 
-  <script>
-    let currentQuiz = [];
-    let currentQuestionIndex = 0;
-    let currentScore = 0;
-    let questionLocked = false;
-
-    function showMainSection(sectionId, btn) {
-      document.getElementById("weeklySection").style.display = "none";
-      document.getElementById("practiceSection").style.display = "none";
-      document.getElementById(sectionId).style.display = "block";
-
-      const navBtns = document.querySelectorAll(".course-nav-btn");
-      navBtns.forEach(button => button.classList.remove("active-nav"));
-      if (btn) btn.classList.add("active-nav");
-    }
-
-    function showWeek(weekId, btn) {
-      const allWeeks = document.querySelectorAll(".week-panel");
-      allWeeks.forEach(week => week.style.display = "none");
-
-      const targetWeek = document.getElementById(weekId);
-      if (targetWeek) {
-        targetWeek.style.display = "block";
-      }
-
-      const weekBtns = document.querySelectorAll(".week-chip");
-      weekBtns.forEach(button => button.classList.remove("active-week"));
-      if (btn) btn.classList.add("active-week");
-    }
-
-    async function startQuiz() {
-      const quizContainer = document.getElementById("quizContainer");
-      const quizMeta = document.getElementById("quizMeta");
-
-      quizContainer.innerHTML = `
-        <div class="quiz-loading-card">
-          <div class="quiz-loading-spinner"></div>
-          <p>Generating your 10-question quiz...</p>
-          <p>正在生成 10 道练习题...</p>
-        </div>
-      `;
-
-      quizMeta.innerText = "Generating quiz...";
-
-      try {
-        const response = await fetch("https://study-hub-clean.onrender.com/api/generate-quiz", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            topic: "economics",
-            count: 10
-          })
-        });
-
-        const data = await response.json();
-
-        if (!data.questions || !Array.isArray(data.questions)) {
-          throw new Error("Invalid quiz response");
-        }
-
-        currentQuiz = data.questions;
-        currentQuestionIndex = 0;
-        currentScore = 0;
-        questionLocked = false;
-
-        renderQuestion();
-      } catch (error) {
-        console.error(error);
-        quizContainer.innerHTML = `
-          <div class="quiz-error-card">
-            <p>Failed to generate quiz.</p>
-            <p>生成题目失败。</p>
-          </div>
-        `;
-        quizMeta.innerText = "Quiz generation failed";
-      }
-    }
-
-    function renderQuestion() {
-      const quizContainer = document.getElementById("quizContainer");
-      const quizMeta = document.getElementById("quizMeta");
-
-      if (!currentQuiz.length) return;
-
-      if (currentQuestionIndex >= currentQuiz.length) {
-        quizContainer.innerHTML = `
-          <div class="quiz-result-card">
-            <div class="result-ring">${currentScore}/${currentQuiz.length}</div>
-            <h3>Quiz Complete</h3>
-            <p>You answered ${currentScore} out of ${currentQuiz.length} correctly.</p>
-            <p>你答对了 ${currentScore} / ${currentQuiz.length} 题。</p>
-            <button class="next-btn" onclick="startQuiz()">Try Another Quiz</button>
-          </div>
-        `;
-        quizMeta.innerText = `Finished · Score ${currentScore}/${currentQuiz.length}`;
-        return;
-      }
-
-      const q = currentQuiz[currentQuestionIndex];
-      questionLocked = false;
-
-      quizMeta.innerText = `Question ${currentQuestionIndex + 1} of ${currentQuiz.length} · Score ${currentScore}`;
-
-      quizContainer.innerHTML = `
-        <div class="quiz-question-card">
-          <div class="quiz-progress">Q${currentQuestionIndex + 1} / ${currentQuiz.length}</div>
-
-          <h3 class="quiz-question-title">${q.question}</h3>
-          <p class="quiz-question-zh">${q.questionZh || ""}</p>
-
-          <div class="quiz-options" id="quizOptions">
-            ${q.options.map(option => `
-              <button class="option-btn" onclick="selectAnswer('${option.key}')">
-                <span class="option-key">${option.key}</span>
-                <span class="option-text">${option.text}</span>
-              </button>
-            `).join("")}
-          </div>
-
-          <div class="quiz-feedback-row">
-            <div id="feedbackText" class="feedback-text">Choose one option · 请选择一个答案</div>
-            <div id="feedbackBadge" class="feedback-badge neutral-badge">…</div>
-          </div>
-
-          <div id="explanationBox" class="explanation-box" style="display:none;"></div>
-
-          <div class="quiz-actions">
-            <button id="nextBtn" class="next-btn" style="display:none;" onclick="goNextQuestion()">Next Question</button>
-          </div>
-        </div>
-      `;
-    }
-
-    function selectAnswer(selectedKey) {
-      if (questionLocked) return;
-
-      questionLocked = true;
-
-      const q = currentQuiz[currentQuestionIndex];
-      const correctKey = q.correctAnswer;
-      const optionButtons = document.querySelectorAll(".option-btn");
-      const feedbackText = document.getElementById("feedbackText");
-      const feedbackBadge = document.getElementById("feedbackBadge");
-      const explanationBox = document.getElementById("explanationBox");
-      const nextBtn = document.getElementById("nextBtn");
-
-      optionButtons.forEach(button => {
-        button.disabled = true;
-        const key = button.querySelector(".option-key").innerText.trim();
-
-        if (key === correctKey) {
-          button.classList.add("correct-option");
-        }
-
-        if (key === selectedKey && key !== correctKey) {
-          button.classList.add("wrong-option");
-        }
-      });
-
-      if (selectedKey === correctKey) {
-        currentScore += 1;
-        feedbackText.innerText = "Correct · 答对了";
-        feedbackBadge.innerText = "✓";
-        feedbackBadge.className = "feedback-badge correct-badge";
-      } else {
-        feedbackText.innerText = `Incorrect · 正确答案是 ${correctKey}`;
-        feedbackBadge.innerText = "✕";
-        feedbackBadge.className = "feedback-badge wrong-badge";
-      }
-
-      explanationBox.style.display = "block";
-      explanationBox.innerHTML = `
-        <strong>Explanation:</strong> ${q.explanation || ""}
-        <br><br>
-        <strong>中文解释：</strong>${q.explanationZh || ""}
-      `;
-
-      nextBtn.style.display = "inline-block";
-    }
-
-    function goNextQuestion() {
-      currentQuestionIndex += 1;
-      renderQuestion();
-    }
-
-    window.addEventListener("DOMContentLoaded", function () {
-      const hash = window.location.hash;
-      if (!hash) return;
-
-      const map = {
-        "#week1-gdp": "week1",
-        "#week2-cash": "week2",
-        "#week3-supply": "week3",
-        "#week4-inflation": "week4",
-        "#week4-unemployment": "week4",
-        "#week5-labour": "week5",
-        "#week6-inequality": "week6",
-        "#week7-game": "week7",
-        "#week8-monopoly": "week8",
-        "#week9-commons": "week9",
-        "#week10-revision": "week10"
-      };
-
-      const targetWeek = map[hash];
-      if (!targetWeek) return;
-
-      const weeklySection = document.getElementById("weeklySection");
-      const practiceSection = document.getElementById("practiceSection");
-
-      if (weeklySection) weeklySection.style.display = "block";
-      if (practiceSection) practiceSection.style.display = "none";
-
-      const navBtns = document.querySelectorAll(".course-nav-btn");
-      navBtns.forEach(button => button.classList.remove("active-nav"));
-      if (navBtns[0]) navBtns[0].classList.add("active-nav");
-
-      const allWeeks = document.querySelectorAll(".week-panel");
-      allWeeks.forEach(week => week.style.display = "none");
-
-      const targetWeekPanel = document.getElementById(targetWeek);
-      if (targetWeekPanel) {
-        targetWeekPanel.style.display = "block";
-      }
-
-      const weekBtns = document.querySelectorAll(".week-chip");
-      weekBtns.forEach(button => button.classList.remove("active-week"));
-
-      const weekIndexMap = {
-        "week1": 0,
-        "week2": 1,
-        "week3": 2,
-        "week4": 3,
-        "week5": 4,
-        "week6": 5,
-        "week7": 6,
-        "week8": 7,
-        "week9": 8,
-        "week10": 9
-      };
-
-      const btnIndex = weekIndexMap[targetWeek];
-      if (weekBtns[btnIndex]) {
-        weekBtns[btnIndex].classList.add("active-week");
-      }
-
-      setTimeout(() => {
-        const target = document.querySelector(hash);
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 250);
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
