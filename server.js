@@ -178,21 +178,138 @@ const COURSE_BLUEPRINTS = {
   accounting: {
     displayName: "Accounting and Finance",
     audience:
-      "first-year undergraduate students studying introductory accounting and finance",
+      "first-year undergraduate students studying introductory accounting and finance for managers in business and health",
     systemContext:
-      "Focus on beginner-level accounting and finance concepts.",
+      "Focus on first-year Accounting and Finance revision for non-specialists. Questions should cover financial statements, cash flow, costing, budgeting, time value of money, investment appraisal, financing decisions, and healthcare-relevant managerial applications. Keep the language clear, natural, and exam-oriented.",
     concepts: [
-      "financial statements",
-      "income statement",
+      "business and firm",
+      "financing assets operations revenue",
+      "financial accounting",
+      "management accounting",
+      "shareholders",
+      "board of directors",
+      "ownership and control",
+      "limited liability",
+
       "balance sheet",
-      "cash flow",
+      "statement of financial position",
+      "income statement",
+      "profit and loss statement",
       "assets",
       "liabilities",
       "equity",
-      "double entry",
-      "profit",
+      "retained earnings",
       "revenue",
-      "expenses"
+      "expenses",
+      "gross profit",
+      "operating profit",
+      "net profit",
+      "depreciation",
+
+      "statement of cash flows",
+      "cash equivalents",
+      "operating activities",
+      "investing activities",
+      "financing activities",
+      "cash versus profit",
+      "liquidity",
+      "working capital",
+      "trade receivables",
+      "trade payables",
+      "inventory",
+
+      "ratio analysis",
+      "profitability ratio",
+      "efficiency ratio",
+      "liquidity ratio",
+      "gross profit margin",
+      "operating profit margin",
+      "return on shareholders funds",
+      "return on capital employed",
+      "inventory turnover period",
+      "trade receivables collection period",
+      "trade payables settlement period",
+      "sales revenue to capital employed",
+
+      "cost",
+      "expense",
+      "cost behaviour",
+      "fixed cost",
+      "variable cost",
+      "semi-variable cost",
+      "contribution margin",
+      "cost structure",
+      "breakeven point",
+      "margin of safety",
+      "pricing decision",
+
+      "budget",
+      "forecast",
+      "budgetary control",
+      "top-down budgeting",
+      "bottom-up budgeting",
+      "master budget",
+      "flexible budget",
+      "variance analysis",
+      "favourable variance",
+      "unfavourable variance",
+      "sales volume variance",
+      "sales price variance",
+      "material price variance",
+      "material usage variance",
+      "labour rate variance",
+      "labour efficiency variance",
+      "profit reconciliation",
+
+      "timeline",
+      "time value of money",
+      "present value",
+      "future value",
+      "discounting",
+      "compounding",
+      "cash flow stream",
+      "perpetuity",
+      "annuity",
+
+      "NPV",
+      "NPV rule",
+      "IRR",
+      "IRR rule",
+      "payback period",
+      "payback rule",
+      "stand-alone project",
+      "mutually exclusive projects",
+      "scale timing risk problem",
+      "profitability index",
+      "capital constraints",
+      "resource constraints",
+
+      "sensitivity analysis",
+      "scenario analysis",
+      "risk analysis",
+      "capital structure",
+      "debt",
+      "equity",
+      "MM proposition 1",
+      "MM proposition 2",
+      "trade-off theory",
+
+      "private placing",
+      "IPO",
+      "rights issue",
+      "bank borrowing",
+      "bonds",
+      "venture capital",
+      "angel investors",
+      "crowdfunding",
+      "weighted average cost of capital",
+      "WACC",
+      "shareholder payout policy",
+
+      "healthcare finance",
+      "hospital budgeting",
+      "healthcare investment appraisal",
+      "NHS project evaluation"
     ]
   }
 };
@@ -596,10 +713,11 @@ Rules:
 6. Make the options plausible.
 7. Include a good mix of direct concept questions and short applied questions.
 8. For statistics, include method-choice and interpretation questions where appropriate.
-9. Keep the English natural and student-friendly.
-10. Keep the Chinese concise.
-11. Never include markdown fences or commentary.
-12. This is batch ${batchIndex + 1}, so make it feel fresh and non-repetitive.
+9. For accounting and finance, include a balanced mix of financial statement interpretation, costing, budgeting, variance logic, time value of money, NPV/IRR/payback/PI decisions, and financing questions.
+10. Keep the English natural and student-friendly.
+11. Keep the Chinese concise.
+12. Never include markdown fences or commentary.
+13. This is batch ${batchIndex + 1}, so make it feel fresh and non-repetitive.
 `;
 
   const completion = await openai.chat.completions.create({

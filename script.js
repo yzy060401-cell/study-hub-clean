@@ -331,6 +331,157 @@ function getStatisticsKeywordMap() {
   };
 }
 
+function getAccountingKeywordMap() {
+  return {
+    business: "accounting.html#week1-foundations",
+    firm: "accounting.html#week1-foundations",
+    shareholder: "accounting.html#week1-foundations",
+    board: "accounting.html#week1-foundations",
+    manager: "accounting.html#week1-foundations",
+    "financial accounting": "accounting.html#week1-foundations",
+    "management accounting": "accounting.html#week1-foundations",
+    healthcare: "accounting.html#week1-foundations",
+    "企业": "accounting.html#week1-foundations",
+    "股东": "accounting.html#week1-foundations",
+    "董事会": "accounting.html#week1-foundations",
+    "管理会计": "accounting.html#week1-foundations",
+    "财务会计": "accounting.html#week1-foundations",
+
+    "balance sheet": "accounting.html#week2-statements",
+    "income statement": "accounting.html#week2-statements",
+    "statement of financial position": "accounting.html#week2-statements",
+    assets: "accounting.html#week2-statements",
+    liabilities: "accounting.html#week2-statements",
+    equity: "accounting.html#week2-statements",
+    revenue: "accounting.html#week2-statements",
+    expense: "accounting.html#week2-statements",
+    profit: "accounting.html#week2-statements",
+    depreciation: "accounting.html#week2-statements",
+    "资产负债表": "accounting.html#week2-statements",
+    "利润表": "accounting.html#week2-statements",
+    "资产": "accounting.html#week2-statements",
+    "负债": "accounting.html#week2-statements",
+    "权益": "accounting.html#week2-statements",
+    "折旧": "accounting.html#week2-statements",
+
+    "cash flow": "accounting.html#week3-cashflow",
+    "cash flows": "accounting.html#week3-cashflow",
+    liquidity: "accounting.html#week3-cashflow",
+    ratio: "accounting.html#week3-cashflow",
+    ratios: "accounting.html#week3-cashflow",
+    roce: "accounting.html#week3-cashflow",
+    margin: "accounting.html#week3-cashflow",
+    turnover: "accounting.html#week3-cashflow",
+    "operating activities": "accounting.html#week3-cashflow",
+    "investing activities": "accounting.html#week3-cashflow",
+    "financing activities": "accounting.html#week3-cashflow",
+    "现金流": "accounting.html#week3-cashflow",
+    "现金流量表": "accounting.html#week3-cashflow",
+    "流动性": "accounting.html#week3-cashflow",
+    "比率": "accounting.html#week3-cashflow",
+    "周转": "accounting.html#week3-cashflow",
+
+    costing: "accounting.html#week4-costing",
+    cost: "accounting.html#week4-costing",
+    "fixed cost": "accounting.html#week4-costing",
+    "variable cost": "accounting.html#week4-costing",
+    contribution: "accounting.html#week4-costing",
+    breakeven: "accounting.html#week4-costing",
+    "break-even": "accounting.html#week4-costing",
+    "margin of safety": "accounting.html#week4-costing",
+    "固定成本": "accounting.html#week4-costing",
+    "变动成本": "accounting.html#week4-costing",
+    "贡献边际": "accounting.html#week4-costing",
+    "盈亏平衡": "accounting.html#week4-costing",
+
+    budget: "accounting.html#week5-budgeting",
+    budgeting: "accounting.html#week5-budgeting",
+    variance: "accounting.html#week5-budgeting",
+    forecast: "accounting.html#week5-budgeting",
+    "flexible budget": "accounting.html#week5-budgeting",
+    "master budget": "accounting.html#week5-budgeting",
+    labour: "accounting.html#week5-budgeting",
+    labor: "accounting.html#week5-budgeting",
+    material: "accounting.html#week5-budgeting",
+    "预算": "accounting.html#week5-budgeting",
+    "差异": "accounting.html#week5-budgeting",
+    "弹性预算": "accounting.html#week5-budgeting",
+    "总预算": "accounting.html#week5-budgeting",
+
+    timeline: "accounting.html#week6-tvm",
+    "time value": "accounting.html#week6-tvm",
+    tvm: "accounting.html#week6-tvm",
+    pv: "accounting.html#week6-tvm",
+    fv: "accounting.html#week6-tvm",
+    perpetuity: "accounting.html#week6-tvm",
+    annuity: "accounting.html#week6-tvm",
+    discounting: "accounting.html#week6-tvm",
+    compounding: "accounting.html#week6-tvm",
+    "时间价值": "accounting.html#week6-tvm",
+    "现值": "accounting.html#week6-tvm",
+    "终值": "accounting.html#week6-tvm",
+    "永续年金": "accounting.html#week6-tvm",
+    "年金": "accounting.html#week6-tvm",
+    "贴现": "accounting.html#week6-tvm",
+    "复利": "accounting.html#week6-tvm",
+
+    npv: "accounting.html#week7-investment",
+    irr: "accounting.html#week7-investment",
+    payback: "accounting.html#week7-investment",
+    pi: "accounting.html#week7-investment",
+    "profitability index": "accounting.html#week7-investment",
+    investment: "accounting.html#week7-investment",
+    investments: "accounting.html#week7-investment",
+    "mutually exclusive": "accounting.html#week7-investment",
+    "capital constraint": "accounting.html#week7-investment",
+    "资源约束": "accounting.html#week7-investment",
+    "投资": "accounting.html#week7-investment",
+    "净现值": "accounting.html#week7-investment",
+    "内部收益率": "accounting.html#week7-investment",
+    "回收期": "accounting.html#week7-investment",
+    "盈利指数": "accounting.html#week7-investment",
+
+    sensitivity: "accounting.html#week8-risk",
+    scenario: "accounting.html#week8-risk",
+    risk: "accounting.html#week8-risk",
+    "capital structure": "accounting.html#week8-risk",
+    debt: "accounting.html#week8-risk",
+    "trade-off theory": "accounting.html#week8-risk",
+    mm: "accounting.html#week8-risk",
+    "敏感性分析": "accounting.html#week8-risk",
+    "情景分析": "accounting.html#week8-risk",
+    "资本结构": "accounting.html#week8-risk",
+    "债务": "accounting.html#week8-risk",
+    "风险": "accounting.html#week8-risk",
+
+    ipo: "accounting.html#week9-financing",
+    "private placing": "accounting.html#week9-financing",
+    "rights issue": "accounting.html#week9-financing",
+    bond: "accounting.html#week9-financing",
+    bonds: "accounting.html#week9-financing",
+    loan: "accounting.html#week9-financing",
+    loans: "accounting.html#week9-financing",
+    wacc: "accounting.html#week9-financing",
+    "venture capital": "accounting.html#week9-financing",
+    crowdfunding: "accounting.html#week9-financing",
+    financing: "accounting.html#week9-financing",
+    finance: "accounting.html#week9-financing",
+    "股权": "accounting.html#week9-financing",
+    "债券": "accounting.html#week9-financing",
+    "借款": "accounting.html#week9-financing",
+    "融资": "accounting.html#week9-financing",
+    "配股": "accounting.html#week9-financing",
+
+    revision: "accounting.html#week10-revision",
+    review: "accounting.html#week10-revision",
+    consolidation: "accounting.html#week10-revision",
+    presentation: "accounting.html#week10-revision",
+    "复习": "accounting.html#week10-revision",
+    "整合": "accounting.html#week10-revision",
+    "展示": "accounting.html#week10-revision"
+  };
+}
+
 function searchCourse() {
   const input = document.getElementById("search");
   if (!input) return;
@@ -371,6 +522,14 @@ function searchCourse() {
   ) {
     window.location.href = "accounting.html";
     return;
+  }
+
+  const accountingMap = getAccountingKeywordMap();
+  for (const key in accountingMap) {
+    if (query.includes(key)) {
+      window.location.href = accountingMap[key];
+      return;
+    }
   }
 
   const statisticsMap = getStatisticsKeywordMap();
@@ -552,8 +711,8 @@ function renderQuestion() {
       <p class="quiz-question-zh">${q.questionZh || ""}</p>
 
       <div class="quiz-tag-row">
-        <span class="quiz-mini-tag">${(q.concept || CURRENT_TOPIC)}</span>
-        <span class="quiz-mini-tag">${(q.difficulty || "medium")}</span>
+        <span class="quiz-mini-tag">${q.concept || CURRENT_TOPIC}</span>
+        <span class="quiz-mini-tag">${q.difficulty || "medium"}</span>
       </div>
 
       <div class="quiz-options" id="quizOptions">
@@ -692,6 +851,21 @@ function getHashWeekMapByTopic() {
     };
   }
 
+  if (CURRENT_TOPIC === "accounting") {
+    return {
+      "#week1-foundations": "week1",
+      "#week2-statements": "week2",
+      "#week3-cashflow": "week3",
+      "#week4-costing": "week4",
+      "#week5-budgeting": "week5",
+      "#week6-tvm": "week6",
+      "#week7-investment": "week7",
+      "#week8-risk": "week8",
+      "#week9-financing": "week9",
+      "#week10-revision": "week10"
+    };
+  }
+
   return {
     "#week1-gdp": "week1",
     "#week2-cash": "week2",
@@ -787,5 +961,5 @@ window.goToCourse = goToCourse;
 window.showMainSection = showMainSection;
 window.showWeek = showWeek;
 window.startQuiz = startQuiz;
-window.selectAnswer = selectAnswer;
 window.goNextQuestion = goNextQuestion;
+window.selectAnswer = selectAnswer;

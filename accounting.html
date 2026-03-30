@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Finance | Business & Health</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accounting & Finance | Business & Health</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="accounting-page">
 
@@ -11,29 +12,663 @@
 
     <div class="course-topbar">
       <a href="index.html" class="mini-back">← Back to Home</a>
-      <span class="course-tag">Finance</span>
+      <span class="course-tag">Accounting & Finance</span>
     </div>
 
     <section class="course-hero">
-      <div class="course-hero-badge">Finance / Accounting · Coming Soon</div>
-      <h1 class="course-title">Finance</h1>
+      <div class="course-hero-badge">GBSH0048 · Accounting and Finance for Managers</div>
+      <h1 class="course-title">Accounting & Finance</h1>
       <p class="course-subtitle">
-        Course page under construction
-        <br>
-        金融课程页面正在建设中
+        Weekly Review + AI Practice
+        <br />
+        课程周复习 + AI练题
       </p>
     </section>
 
-    <section class="coming-soon-card">
-      <h2>Finance content is coming soon</h2>
-      <p>
-        This section is being prepared in the same style as Economics and Statistics.
-        For now, the homepage button is active so the site structure stays complete and clean.
-      </p>
-      <p>
-        这一部分后面会按照 Economics 和 Statistics 的同样风格继续补充。
-        目前先保留这个入口页，避免首页跳转时报错。
-      </p>
+    <section class="course-main-nav">
+      <button class="course-nav-btn active-nav" onclick="showMainSection('weeklySection', this)">Weekly Review</button>
+      <button class="course-nav-btn" onclick="showMainSection('practiceSection', this)">AI Practice</button>
+    </section>
+
+    <!-- WEEKLY REVIEW -->
+    <section id="weeklySection" class="main-section">
+
+      <div class="section-intro-card">
+        <h2>Weekly Review</h2>
+        <p>
+          Choose a week below to review key concepts, core formulas, decision logic, and exam-focused takeaways.
+          <br />
+          选择下方周次，查看核心概念、公式、决策逻辑和考试重点。
+        </p>
+      </div>
+
+      <div class="week-grid">
+        <button class="week-chip active-week" onclick="showWeek('week1', this)">Week 1</button>
+        <button class="week-chip" onclick="showWeek('week2', this)">Week 2</button>
+        <button class="week-chip" onclick="showWeek('week3', this)">Week 3</button>
+        <button class="week-chip" onclick="showWeek('week4', this)">Week 4</button>
+        <button class="week-chip" onclick="showWeek('week5', this)">Week 5</button>
+        <button class="week-chip" onclick="showWeek('week6', this)">Week 6</button>
+        <button class="week-chip" onclick="showWeek('week7', this)">Week 7</button>
+        <button class="week-chip" onclick="showWeek('week8', this)">Week 8</button>
+        <button class="week-chip" onclick="showWeek('week9', this)">Week 9</button>
+        <button class="week-chip" onclick="showWeek('week10', this)">Week 10</button>
+      </div>
+
+      <!-- WEEK 1 -->
+      <div id="week1" class="week-panel" style="display:block;">
+        <div id="week1-foundations"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 1</div>
+          <h2>Foundations of Business and Financial Decision-Making</h2>
+          <p>企业基础与财务决策导论</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Business / firm ｜ 企业 / 公司</li>
+              <li>Financing, assets, operations, revenue ｜ 融资、资产、运营、收入</li>
+              <li>Financial accounting vs management accounting ｜ 财务会计与管理会计</li>
+              <li>Shareholders, board, managers ｜ 股东、董事会、管理层</li>
+              <li>Ownership and control ｜ 所有权与控制权</li>
+              <li>Limited liability ｜ 有限责任</li>
+              <li>Healthcare business examples ｜ 医疗行业案例</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>A business raises finance, buys assets, uses them to deliver goods or services, and earns revenue. ｜ 企业先融资，再购买资产，用资产提供产品或服务，并获取收入。</li>
+              <li>To be financially viable, revenue must be enough to cover costs. ｜ 企业要持续经营，收入必须足以覆盖成本。</li>
+              <li>Financial accounting is mainly for external reporting, while management accounting supports internal decisions. ｜ 财务会计主要服务外部报告，管理会计主要支持内部决策。</li>
+              <li>Managers use accounting and finance information to decide on investment, financing, pricing, and control. ｜ 管理者用会计与财务信息来做投资、融资、定价和控制决策。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Owners are not the same as managers. ｜ 所有者不等于管理者。</li>
+              <li>Accounting is not only record-keeping; it is also decision support. ｜ 会计不只是记账，也是一种决策支持工具。</li>
+              <li>A profitable-looking business can still face funding or cash problems. ｜ 看起来赚钱的企业也可能面临融资或现金流问题。</li>
+              <li>Healthcare organisations still face business decisions, even when their mission is social or clinical. ｜ 即使目标偏社会或临床，医疗机构仍然要面对商业决策。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Week 1 is not just definitions. Strong answers explain how finance, assets, operations and decision-making connect in a real organisation.
+            </p>
+            <p>
+              第1周不只是背定义。高质量答案要说明融资、资产、运营与决策在真实组织中如何连起来。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 2 -->
+      <div id="week2" class="week-panel">
+        <div id="week2-statements"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 2</div>
+          <h2>Financial Statements I: Balance Sheet & Income Statement</h2>
+          <p>财务报表 I：资产负债表与利润表</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Balance Sheet / Statement of Financial Position ｜ 资产负债表</li>
+              <li>Income Statement / Profit and Loss ｜ 利润表</li>
+              <li>Assets, liabilities, equity ｜ 资产、负债、权益</li>
+              <li>Revenue, expenses, profit ｜ 收入、费用、利润</li>
+              <li>Gross profit, operating profit, net profit ｜ 毛利、营业利润、净利润</li>
+              <li>Depreciation ｜ 折旧</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>The balance sheet is a snapshot at one point in time. ｜ 资产负债表反映某一时点的财务状况。</li>
+              <li>The income statement measures performance over a period of time. ｜ 利润表衡量一段时间内的经营表现。</li>
+              <li>Assets = Liabilities + Equity is the core accounting relationship. ｜ 资产 = 负债 + 权益 是核心会计恒等式。</li>
+              <li>The two statements are linked: profit can increase retained earnings. ｜ 两张报表是联动的，利润会影响留存收益。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Income statement shows flow; balance sheet shows position. ｜ 利润表看“流量”，资产负债表看“存量”。</li>
+              <li>Not every cash-related item belongs on the income statement. ｜ 不是所有和现金有关的项目都进利润表。</li>
+              <li>Depreciation is an expense, but not an immediate cash outflow. ｜ 折旧是费用，但不是当期真实现金流出。</li>
+              <li>Dividends are not the same as operating expenses. ｜ 股利和经营费用不是一回事。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              In statement questions, do not just list items. First identify what belongs to performance, what belongs to financial position, and how they connect.
+            </p>
+            <p>
+              做报表题时不要机械罗列项目。先判断哪些属于经营表现，哪些属于财务状况，以及它们之间如何连接。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 3 -->
+      <div id="week3" class="week-panel">
+        <div id="week3-cashflow"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 3</div>
+          <h2>Financial Statements II: Cash Flow & Ratio Analysis</h2>
+          <p>财务报表 II：现金流与比率分析</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Statement of Cash Flows ｜ 现金流量表</li>
+              <li>Operating / investing / financing activities ｜ 经营 / 投资 / 融资活动</li>
+              <li>Cash vs profit ｜ 现金与利润</li>
+              <li>Liquidity ｜ 流动性</li>
+              <li>Profitability ratios ｜ 盈利能力比率</li>
+              <li>Efficiency ratios ｜ 效率比率</li>
+              <li>ROCE, margin, turnover ｜ 资本回报率、利润率、周转率</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Cash flow statements show where cash came from and where it went. ｜ 现金流量表说明现金从哪里来、流向哪里。</li>
+              <li>Operating cash flow is usually the most important signal of underlying business health. ｜ 经营现金流通常最能反映企业基本面。</li>
+              <li>Ratio analysis turns raw financial statements into interpretable performance indicators. ｜ 比率分析把原始报表转化为可解释的经营指标。</li>
+              <li>Comparisons matter: ratios are useful across time or across firms. ｜ 比率的意义来自比较：纵向比较或横向比较都重要。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>A profitable firm can still run into cash-flow trouble. ｜ 盈利企业也可能出现现金流危机。</li>
+              <li>Operating cash flow is not the same as net income. ｜ 经营现金流不等于净利润。</li>
+              <li>A high ratio is not always “good” without context. ｜ 没有背景时，高比率不一定就代表好。</li>
+              <li>Ratios simplify reality, so they must be interpreted carefully. ｜ 比率是对现实的简化，因此必须谨慎解读。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              A strong answer explains why profit and cash can diverge, and then links ratio results back to business performance rather than treating them as isolated formulas.
+            </p>
+            <p>
+              高分答案要解释利润和现金为什么会背离，并把比率结果重新联系到真实经营，而不是只把它们当成孤立公式。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 4 -->
+      <div id="week4" class="week-panel">
+        <div id="week4-costing"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 4</div>
+          <h2>Costing & Breakeven Analysis</h2>
+          <p>成本分类与盈亏平衡分析</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Fixed cost ｜ 固定成本</li>
+              <li>Variable cost ｜ 变动成本</li>
+              <li>Semi-variable cost ｜ 混合成本</li>
+              <li>Cost behaviour ｜ 成本性态</li>
+              <li>Contribution margin ｜ 贡献边际</li>
+              <li>Breakeven point ｜ 盈亏平衡点</li>
+              <li>Margin of safety ｜ 安全边际</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Understanding cost structure helps managers forecast profit and plan output. ｜ 理解成本结构有助于管理者预测利润和规划产出。</li>
+              <li>Contribution margin = selling price – variable cost per unit. ｜ 贡献边际 = 单价 – 单位变动成本。</li>
+              <li>Breakeven occurs when total revenue equals total cost. ｜ 盈亏平衡点出现在总收入等于总成本时。</li>
+              <li>Changes in price, cost, or volume can materially shift profitability. ｜ 价格、成本和销量变化都会显著影响利润。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Cost is context-dependent; not all costs matter for every decision. ｜ 成本具有情境依赖性，不是所有成本都对每个决策相关。</li>
+              <li>Contribution margin is not the same as profit. ｜ 贡献边际不等于利润。</li>
+              <li>A lower price may increase volume, but still reduce overall profit. ｜ 降价可能提高销量，但仍可能降低总利润。</li>
+              <li>Healthcare services also have cost structures, not just factories. ｜ 医疗服务同样有成本结构，不只是制造业才有。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              In breakeven questions, always connect the calculation to decision-making: what happens if price falls, demand rises, or fixed costs increase?
+            </p>
+            <p>
+              做盈亏平衡题时，不要只停在计算。一定要继续分析：降价、需求上升或固定成本增加后，决策会发生什么变化。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 5 -->
+      <div id="week5" class="week-panel">
+        <div id="week5-budgeting"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 5</div>
+          <h2>Budgeting & Variance Analysis</h2>
+          <p>预算与差异分析</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Budget ｜ 预算</li>
+              <li>Forecast ｜ 预测</li>
+              <li>Master budget ｜ 总预算</li>
+              <li>Flexible budget ｜ 弹性预算</li>
+              <li>Top-down / bottom-up budgeting ｜ 自上而下 / 自下而上预算</li>
+              <li>Favourable / unfavourable variance ｜ 有利 / 不利差异</li>
+              <li>Sales, labour, material variances ｜ 销售、人工、材料差异</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>A budget is a financial plan for future activity. ｜ 预算是对未来活动的财务规划。</li>
+              <li>A flexible budget adjusts expected figures to actual activity levels. ｜ 弹性预算会根据实际业务量调整预算值。</li>
+              <li>Variance analysis compares actual performance with budgeted expectations. ｜ 差异分析比较实际结果与预算目标。</li>
+              <li>The purpose is not just to identify gaps, but to understand why they occurred. ｜ 差异分析的目的不只是找出偏差，更是解释偏差成因。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Budget and forecast are related but not the same. ｜ 预算和预测相关，但不是同一个概念。</li>
+              <li>A favourable variance is not always good in a deeper strategic sense. ｜ 有利差异不一定在更深层战略上就是好事。</li>
+              <li>Static and flexible budgets answer different questions. ｜ 静态预算和弹性预算回答的是不同问题。</li>
+              <li>Variance formulas matter, but interpretation matters more. ｜ 差异公式重要，但解释更重要。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              A high-quality answer shows both the calculation and the managerial meaning: was the variance caused by volume, price, efficiency, or control failure?
+            </p>
+            <p>
+              高分答案既要算对，也要说明管理含义：差异到底是销量、价格、效率还是控制失误造成的？
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 6 -->
+      <div id="week6" class="week-panel">
+        <div id="week6-tvm"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 6</div>
+          <h2>Time Value of Money</h2>
+          <p>货币时间价值</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Timeline ｜ 时间线</li>
+              <li>Cash inflow / outflow ｜ 现金流入 / 流出</li>
+              <li>Present value (PV) ｜ 现值</li>
+              <li>Future value (FV) ｜ 终值</li>
+              <li>Discounting ｜ 贴现</li>
+              <li>Compounding ｜ 复利</li>
+              <li>Perpetuity ｜ 永续年金</li>
+              <li>Annuity ｜ 年金</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Cash flows at different points in time cannot be directly compared. ｜ 不同时间点的现金流不能直接比较。</li>
+              <li>To move a cash flow forward, compound it; to move it backward, discount it. ｜ 把现金流往未来移动要复利，往现在移动要贴现。</li>
+              <li>PV and FV are different ways of expressing equivalent value across time. ｜ 现值和终值是对跨期等值关系的两种表达。</li>
+              <li>Timelines help organise and interpret financial problems before calculating. ｜ 时间线能帮助你在计算前先把财务问题组织清楚。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>A pound today is not the same as a pound in the future. ｜ 今天的一英镑不等于未来的一英镑。</li>
+              <li>Perpetuity lasts forever; annuity lasts for a fixed number of periods. ｜ 永续年金无限期，普通年金只持续固定期数。</li>
+              <li>Correct timing matters: end of year 1 is also beginning of year 2. ｜ 时间点判断很重要：第1年末也就是第2年初。</li>
+              <li>A timeline error often causes the whole answer to go wrong. ｜ 时间线画错，整个答案通常都会错。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Before using formulas, draw the timeline. Many mistakes come from misunderstanding when each cash flow occurs, not from arithmetic.
+            </p>
+            <p>
+              用公式前先画时间线。很多错误不是算错，而是没搞清楚现金流发生在什么时候。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 7 -->
+      <div id="week7" class="week-panel">
+        <div id="week7-investment"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 7</div>
+          <h2>Investment Appraisal: NPV, IRR, Payback & PI</h2>
+          <p>投资决策：NPV、IRR、回收期与PI</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>NPV rule ｜ 净现值法</li>
+              <li>IRR rule ｜ 内部收益率法</li>
+              <li>Payback rule ｜ 回收期法</li>
+              <li>Mutually exclusive projects ｜ 互斥项目</li>
+              <li>Scale, timing, risk ｜ 规模、时间、风险</li>
+              <li>Profitability index (PI) ｜ 盈利指数</li>
+              <li>Capital constraints ｜ 资本约束</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>For stand-alone projects, accept if NPV &gt; 0. ｜ 对独立项目，若 NPV &gt; 0 则接受。</li>
+              <li>IRR compares a project’s return with its cost of capital. ｜ IRR 把项目回报率与资本成本比较。</li>
+              <li>For mutually exclusive projects, the correct rule is to choose the highest NPV. ｜ 对互斥项目，正确规则是选 NPV 最高者。</li>
+              <li>PI helps rank projects when resources are limited, but it is not perfect. ｜ 当资源有限时，PI有助于排序，但它并不完美。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>IRR can mislead when projects differ in scale, timing, or risk. ｜ 当项目在规模、时间或风险上不同时，IRR可能误导。</li>
+              <li>Payback is simple, but ignores time value of money and later cash flows. ｜ 回收期法简单，但忽略时间价值和后期现金流。</li>
+              <li>PI is useful under a single constraint, but can fail with unused capacity or multiple constraints. ｜ PI在单一约束下有用，但在资源闲置或多重约束时会失效。</li>
+              <li>The highest percentage return is not always the highest value creation. ｜ 回报率最高不一定意味着创造价值最多。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              In investment appraisal, never stop at one rule. Show why NPV is primary, where IRR becomes misleading, and when PI is appropriate.
+            </p>
+            <p>
+              做投资决策题时，不要只会套一个规则。要说明为什么 NPV 是主规则，IRR 在哪里会误导，以及 PI 适用于什么场景。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 8 -->
+      <div id="week8" class="week-panel">
+        <div id="week8-risk"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 8</div>
+          <h2>Sensitivity, Scenario Analysis & Capital Structure</h2>
+          <p>敏感性分析、情景分析与资本结构</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Sensitivity analysis ｜ 敏感性分析</li>
+              <li>Scenario analysis ｜ 情景分析</li>
+              <li>Stand-alone risk ｜ 单变量风险分析</li>
+              <li>Combined effects ｜ 多变量联动</li>
+              <li>Capital structure ｜ 资本结构</li>
+              <li>Debt vs equity ｜ 债务与股权</li>
+              <li>MM propositions ｜ MM命题</li>
+              <li>Trade-off theory ｜ 权衡理论</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Sensitivity analysis changes one variable at a time to see its effect on NPV. ｜ 敏感性分析一次只变一个变量，观察其对NPV的影响。</li>
+              <li>Scenario analysis changes multiple variables together to model coherent states of the world. ｜ 情景分析同时改变多个变量，以模拟更完整的现实情境。</li>
+              <li>Risk analysis improves decision-making by showing uncertainty, not by eliminating it. ｜ 风险分析通过展示不确定性来改进决策，而不是消除不确定性。</li>
+              <li>Capital structure asks how firms mix debt and equity to finance activities. ｜ 资本结构讨论企业如何混合使用债务和股权来融资。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Sensitivity = one variable; scenario = several variables together. ｜ 敏感性分析是单变量，情景分析是多变量联动。</li>
+              <li>Neither method gives a full probability distribution by itself. ｜ 两者本身都不能完整给出概率分布。</li>
+              <li>Debt may be cheaper, but usually brings more financial risk. ｜ 债务可能更便宜，但通常带来更高财务风险。</li>
+              <li>Capital structure theories are frameworks, not automatic answers. ｜ 资本结构理论是分析框架，不是自动答案。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Good answers compare tools critically: what each method reveals, what it misses, and why managers need more than one way to think about uncertainty.
+            </p>
+            <p>
+              好答案要批判性比较不同工具：每种方法能揭示什么、遗漏什么，以及为什么管理者不能只依赖一种不确定性分析方法。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 9 -->
+      <div id="week9" class="week-panel">
+        <div id="week9-financing"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 9</div>
+          <h2>Financing Decisions: Equity, Debt & WACC</h2>
+          <p>融资决策：股权、债务与加权资本成本</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Private placing ｜ 定向配售</li>
+              <li>IPO ｜ 首次公开募股</li>
+              <li>Rights issue ｜ 配股</li>
+              <li>Bank borrowing ｜ 银行借款</li>
+              <li>Bonds ｜ 债券</li>
+              <li>Venture capital / angel investors ｜ 风投 / 天使投资</li>
+              <li>Crowdfunding ｜ 众筹</li>
+              <li>WACC ｜ 加权平均资本成本</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Firms can raise capital from both equity and debt sources. ｜ 企业可以通过股权和债务两种方式融资。</li>
+              <li>Different financing sources have different costs, risks, and control implications. ｜ 不同融资方式对应不同成本、风险和控制权影响。</li>
+              <li>WACC combines the cost of debt and equity into one overall required return. ｜ WACC把债务成本和股权成本综合为一个整体资本成本。</li>
+              <li>Financing choices affect not only cost, but also ownership, flexibility, and risk exposure. ｜ 融资决策影响的不只是成本，还包括控制权、灵活性和风险暴露。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Equity does not require fixed interest payments, but dilutes ownership. ｜ 股权融资不需要固定利息，但会稀释所有权。</li>
+              <li>Debt may be cheaper, but creates repayment obligations. ｜ 债务可能更便宜，但会带来偿付义务。</li>
+              <li>IPO, rights issue, and private placing are not the same route to equity finance. ｜ IPO、配股和定向配售不是同一种股权融资路径。</li>
+              <li>WACC is not just a formula; it is a decision benchmark. ｜ WACC不只是公式，它也是投资决策基准。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Strong answers compare financing methods in terms of cost, control, speed, flexibility and suitability for the organisation’s context, especially in healthcare.
+            </p>
+            <p>
+              高分答案会从成本、控制权、融资速度、灵活性以及组织背景适配性等方面比较不同融资方式，尤其要结合医疗情境。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 10 -->
+      <div id="week10" class="week-panel">
+        <div id="week10-revision"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 10</div>
+          <h2>Consolidation, Revision & Presentation Thinking</h2>
+          <p>总复习、整合与展示逻辑</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>What This Week Does</h3>
+            <ul>
+              <li>Brings together the major ideas from Weeks 1–9. ｜ 把第1到第9周的核心内容整合起来。</li>
+              <li>Emphasises revision, synthesis, and practical application. ｜ 强调整体复习、综合理解和实际应用。</li>
+              <li>Supports preparation for presentations and final exam logic. ｜ 为展示和期末考试思路做准备。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>High-Frequency Areas</h3>
+            <ul>
+              <li>Financial statements and their links ｜ 财务报表及其联动</li>
+              <li>Cash vs profit ｜ 现金与利润</li>
+              <li>Contribution and breakeven ｜ 贡献边际与盈亏平衡</li>
+              <li>Budget vs actual and variance interpretation ｜ 预算与实际差异解释</li>
+              <li>PV / FV / annuity / perpetuity ｜ 现值、终值、年金、永续年金</li>
+              <li>NPV / IRR / Payback / PI ｜ NPV、IRR、回收期、PI</li>
+              <li>Debt, equity, and WACC ｜ 债务、股权与WACC</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Revision Strategy</h3>
+            <ul>
+              <li>Revise by theme, not only by week. ｜ 不要只按周复习，也要按主题复习。</li>
+              <li>Pair formulas with interpretation, not memorisation only. ｜ 公式要和解释一起复习，不能只死记。</li>
+              <li>Use case-based questions to connect accounting and finance logic. ｜ 用案例题把会计与财务逻辑连起来。</li>
+              <li>Practise identifying which decision rule is appropriate in context. ｜ 练习判断在不同情境下该用哪种决策规则。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              The strongest exam answers do not treat each topic separately. They connect statements, cash, cost, budgeting, investment, and financing into one coherent managerial logic.
+            </p>
+            <p>
+              最强的考试答案不会把每个主题割裂开来，而是把报表、现金、成本、预算、投资和融资整合成一个连贯的管理逻辑。
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- AI PRACTICE -->
+    <section id="practiceSection" class="main-section" style="display:none;">
+      <div class="section-intro-card">
+        <h2>AI Practice</h2>
+        <p>
+          Generate 10, 20, 50, or 100 Accounting & Finance questions with instant feedback and adaptive personalisation.
+          <br />
+          生成 10、20、50 或 100 道会计与金融练习题，并根据你的薄弱点进行强化。
+        </p>
+        <div id="memoryHint" class="quiz-subhint">
+          Adaptive mode is on. Local weak-topic tracking works automatically. If MEM0 is connected on the server, long-term personalisation will also be used.
+          <br />
+          自适应练题已开启。浏览器会自动记录你的薄弱点；如果服务器接入了 Mem0，还会启用长期个性化强化。
+        </div>
+      </div>
+
+      <div class="practice-card">
+        <div class="quiz-control-row">
+          <div class="quiz-control-group">
+            <label for="quizCount">Question Count</label>
+            <select id="quizCount" class="quiz-select">
+              <option value="10" selected>10 Questions</option>
+              <option value="20">20 Questions</option>
+              <option value="50">50 Questions</option>
+              <option value="100">100 Questions</option>
+            </select>
+          </div>
+
+          <div class="quiz-control-group">
+            <label for="focusMode">Quiz Mode</label>
+            <select id="focusMode" class="quiz-select">
+              <option value="balanced" selected>Balanced Mix</option>
+              <option value="weak">Focus Weak Areas</option>
+              <option value="random">More Random</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="quiz-topbar">
+          <button id="generateQuizBtn" class="generate-btn" onclick="startQuiz()">Generate Quiz</button>
+          <div id="quizMeta" class="quiz-meta">Ready to practise · 准备开始练习</div>
+        </div>
+
+        <div id="quizContainer" class="quiz-container">
+          <div class="quiz-empty-state">
+            <div class="quiz-empty-icon">◎</div>
+            <p>Choose your quiz size and click the button to generate a new set.</p>
+            <p>选择题目数量后点击按钮，生成一套新的练习题。</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer class="course-footer">

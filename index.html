@@ -3,43 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UCL Study Hub</title>
+  <title>UCL Study Hub | Business & Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="home-page">
+<body class="home-editorial-page">
 
-  <div class="home-shell">
-    <div class="home-brand">UCL Study Hub</div>
+  <header class="home-topbar">
+    <div class="home-topbar-inner">
+      <a href="index.html" class="home-logo">UCL Study Hub</a>
 
-    <h1 class="home-title">
-      Business <span>&</span> Health
-    </h1>
+      <nav class="home-nav">
+        <a href="index.html" class="active">Home / 首页</a>
+        <a href="#">Resources / 资源</a>
+        <a href="#">About / 关于</a>
+      </nav>
 
-    <p class="home-subtitle">
-      Choose a subject to enter the course hub
-      <br />
-      选择一门课程进入对应课程页面
-    </p>
-
-    <div class="orb-grid">
-      <button type="button" class="subject-orb" onclick="goToCourse('economics')">
-        <div class="orb-label">Economics</div>
-        <div class="orb-sub">GBSH0046</div>
-      </button>
-
-      <button type="button" class="subject-orb" onclick="goToCourse('statistics')">
-        <div class="orb-label">Statistics</div>
-        <div class="orb-sub">GBSH0050</div>
-      </button>
-
-      <button type="button" class="subject-orb" onclick="goToCourse('finance')">
-        <div class="orb-label">Finance</div>
-        <div class="orb-sub">Coming Soon</div>
-      </button>
+      <button class="home-signin-btn">Sign In</button>
     </div>
+  </header>
 
-    <p class="author">Built by Bucky Yue</p>
-  </div>
+  <main class="home-editorial-main">
+    <section class="hero-section">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="hero-badge">UCL Study Hub</span>
+
+          <h1 class="hero-title">
+            Business <span>&</span> Health
+            <small>/ 商业与健康</small>
+          </h1>
+
+          <p class="hero-text">
+            Curated course hubs, revision content, and AI practice for UCL Business & Health students.
+            <span>/ 为 UCL Business & Health 学生打造的课程中心、复习内容与 AI 练题平台。</span>
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-image-card">
+            <div class="hero-image-overlay">
+              <div class="mini-panel"></div>
+              <div class="mini-panel"></div>
+            </div>
+            <div class="hero-lines">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="curricula-section">
+      <div class="curricula-head">
+        <div>
+          <h2>Core Curricula / 核心课程</h2>
+          <p>
+            Select your focus area to access specialised resources, weekly review, and AI practice.
+            <span>/ 选择课程方向，进入对应资源、周复习和 AI 练题页面。</span>
+          </p>
+        </div>
+
+        <a href="#" class="view-all-link">View All Resources / 查看所有资源 →</a>
+      </div>
+
+      <div class="curricula-grid">
+
+        <!-- ECONOMICS -->
+        <button type="button" class="course-card course-card-live" onclick="goToCourse('economics')">
+          <div class="course-code">Module GBSH0046</div>
+
+          <h3>Economics / 经济学</h3>
+
+          <p class="course-desc-en">
+            Advanced microeconomic principles applied to global healthcare markets and business strategies.
+          </p>
+
+          <p class="course-desc-cn">
+            应用于全球医疗市场与商业策略的经济学核心知识。
+          </p>
+
+          <div class="course-card-footer">
+            <span>10 Weeks</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </button>
+
+        <!-- STATISTICS -->
+        <button type="button" class="course-card course-card-live" onclick="goToCourse('statistics')">
+          <div class="course-code">Module GBSH0050</div>
+
+          <h3>Statistics / 统计学</h3>
+
+          <p class="course-desc-en">
+            Quantitative methods for data-driven decision making in health systems and business analytics.
+          </p>
+
+          <p class="course-desc-cn">
+            支持医疗系统与商业分析的数据方法与统计思维。
+          </p>
+
+          <div class="course-card-footer">
+            <span>10 Weeks</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </button>
+
+        <!-- ACCOUNTING & FINANCE -->
+        <button type="button" class="course-card course-card-live" onclick="goToCourse('finance')">
+          <div class="course-code">Module GBSH0048</div>
+
+          <h3>Accounting & Finance / 会计与金融</h3>
+
+          <p class="course-desc-en">
+            Financial statements, budgeting, costing, time value of money, investment appraisal, and financing decisions.
+          </p>
+
+          <p class="course-desc-cn">
+            财务报表、预算、成本、货币时间价值、投资决策与融资方式。
+          </p>
+
+          <div class="course-card-footer">
+            <span>10 Weeks</span>
+            <span class="card-arrow">→</span>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <section class="quote-section-home">
+      <div class="quote-mark">”</div>
+      <p class="quote-text-home">
+        Knowledge is not just stored; it is curated for those who seek to redefine the intersection of business and health.
+      </p>
+      <p class="quote-text-cn">
+        知识不仅被储存，更被整理成能帮助你真正理解商业与健康交汇点的学习系统。
+      </p>
+      <div class="quote-tagline">The Curator's Manifesto / 馆长宣言</div>
+    </section>
+  </main>
+
+  <footer class="home-footer">
+    <div class="home-footer-inner">
+      <div>
+        <div class="footer-brand">UCL Study Hub</div>
+        <p>
+          © 2026 UCL Study Hub. Supporting academic excellence across disciplines.
+          <br>
+          支持跨学科的学术成长与课程复习。
+        </p>
+      </div>
+
+      <div class="home-footer-links">
+        <a href="#">Contact Us / 联系我们</a>
+        <a href="#">Privacy Policy / 隐私政策</a>
+        <a href="#">Terms of Service / 服务条款</a>
+        <a href="#">Accessibility / 无障碍</a>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
