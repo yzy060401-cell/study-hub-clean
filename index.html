@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Study Hub</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UCL Study Hub</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="home-page">
 
-<div class="google-container">
+  <div class="home-shell">
+    <div class="home-brand">UCL Study Hub</div>
 
-  <h1 class="logo">
-    Business <span>&</span> Health!
-  </h1>
+    <h1 class="home-title">
+      Business <span>&</span> Health
+    </h1>
 
-  <input
-    type="text"
-    id="search"
-    class="search-box"
-    placeholder="Search Economics, Statistics, Finance, cash, inflation..."
-  >
+    <p class="home-subtitle">
+      Choose a subject to enter the course hub
+      <br />
+      选择一门课程进入对应课程页面
+    </p>
 
-  <button class="search-btn" onclick="searchCourse()">Search</button>
+    <div class="orb-grid">
+      <button type="button" class="subject-orb" onclick="goToCourse('economics')">
+        <div class="orb-label">Economics</div>
+        <div class="orb-sub">GBSH0046</div>
+      </button>
 
-  <p class="author">Built by Bucky Yue</p>
+      <button type="button" class="subject-orb" onclick="goToCourse('statistics')">
+        <div class="orb-label">Statistics</div>
+        <div class="orb-sub">GBSH0050</div>
+      </button>
 
-</div>
+      <button type="button" class="subject-orb" onclick="goToCourse('finance')">
+        <div class="orb-label">Finance</div>
+        <div class="orb-sub">Coming Soon</div>
+      </button>
+    </div>
 
-<script src="script.js"></script>
+    <p class="author">Built by Bucky Yue</p>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

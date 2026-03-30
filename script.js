@@ -2,6 +2,11 @@ let currentQuiz = [];
 let currentQuestionIndex = 0;
 let currentScore = 0;
 let questionLocked = false;
+let currentAttempts = [];
+let quizSessionSaved = false;
+
+const LOCAL_USER_KEY = "studyhub_user_id";
+const LOCAL_WEAK_TOPICS_PREFIX = "studyhub_weak_topics_";
 
 function getCurrentTopic() {
   const path = window.location.pathname.toLowerCase();
@@ -9,10 +14,84 @@ function getCurrentTopic() {
   if (path.includes("statistics")) return "statistics";
   if (path.includes("accounting")) return "accounting";
   if (path.includes("finance")) return "accounting";
+
   return "economics";
 }
 
 const CURRENT_TOPIC = getCurrentTopic();
+
+function getOrCreateUserId() {
+  let userId = localStorage.getItem(LOCAL_USER_KEY);
+
+  if (!userId) {
+    userId =
+      "user_" +
+      Math.random().toString(36).slice(2) +
+      "_" +
+      Date.now().toString(36);
+    localStorage.setItem(LOCAL_USER_KEY, userId);
+  }
+
+  return userId;
+}
+
+function getWeakTopicsStorageKey(topic) {
+  return `${LOCAL_WEAK_TOPICS_PREFIX}${topic}`;
+}
+
+function getLocalWeakTopics(topic) {
+  try {
+    const raw = localStorage.getItem(getWeakTopicsStorageKey(topic));
+    if (!raw) return [];
+
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+
+    return parsed
+      .filter((item) => item && typeof item === "object" && item.concept)
+      .sort((a, b) => (b.score || 0) - (a.score || 0))
+      .slice(0, 8);
+  } catch (error) {
+    console.error("Failed to read local weak topics:", error);
+    return [];
+  }
+}
+
+function updateLocalWeakTopic(topic, concept, isCorrect) {
+  if (!concept) return;
+
+  try {
+    const key = getWeakTopicsStorageKey(topic);
+    const current = getLocalWeakTopics(topic);
+    const map = {};
+
+    current.forEach((item) => {
+      map[item.concept] = {
+        concept: item.concept,
+        score: Number(item.score || 0)
+      };
+    });
+
+    if (!map[concept]) {
+      map[concept] = { concept, score: 0 };
+    }
+
+    if (isCorrect) {
+      map[concept].score = Math.max(0, map[concept].score - 1);
+    } else {
+      map[concept].score += 1;
+    }
+
+    const next = Object.values(map)
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 12);
+
+    localStorage.setItem(key, JSON.stringify(next));
+  } catch (error) {
+    console.error("Failed to update local weak topics:", error);
+  }
+}
 
 function getSelectedQuizCount() {
   const countSelect = document.getElementById("quizCount");
@@ -27,49 +106,43 @@ function getSelectedFocusMode() {
   return modeSelect ? modeSelect.value : "balanced";
 }
 
-function searchCourse() {
-  const input = document.getElementById("search");
-  if (!input) return;
+function goToCourse(course) {
+  const target = String(course || "").toLowerCase();
 
-  const query = input.value.trim().toLowerCase();
-
-  if (!query) {
-    alert("Please enter a subject or keyword.");
-    return;
-  }
-
-  if (
-    query.includes("economics") ||
-    query.includes("econ") ||
-    query.includes("经济")
-  ) {
+  if (target === "economics" || target === "econ") {
     window.location.href = "economics.html";
     return;
   }
 
   if (
-    query.includes("statistics") ||
-    query.includes("stats") ||
-    query.includes("statistic") ||
-    query.includes("统计")
+    target === "statistics" ||
+    target === "stats" ||
+    target === "statistic"
   ) {
     window.location.href = "statistics.html";
     return;
   }
 
   if (
-    query.includes("finance") ||
-    query.includes("accounting") ||
-    query.includes("fin") ||
-    query.includes("acc") ||
-    query.includes("金融") ||
-    query.includes("会计")
+    target === "finance" ||
+    target === "accounting" ||
+    target === "fin" ||
+    target === "acc"
   ) {
     window.location.href = "accounting.html";
     return;
   }
 
-  const economicsMap = {
+  if (target === "ucl" || target === "other" || target === "others") {
+    window.location.href = "accounting.html";
+    return;
+  }
+
+  alert("Course page not ready yet.");
+}
+
+function getEconomicsKeywordMap() {
+  return {
     gdp: "economics.html#week1-gdp",
     climate: "economics.html#week1-gdp",
     temperature: "economics.html#week1-gdp",
@@ -137,7 +210,178 @@ function searchCourse() {
     "mock exam": "economics.html#week10-revision",
     "复习": "economics.html#week10-revision"
   };
+}
 
+function getStatisticsKeywordMap() {
+  return {
+    sampling: "statistics.html#week1-sampling",
+    sample: "statistics.html#week1-sampling",
+    population: "statistics.html#week1-sampling",
+    mean: "statistics.html#week1-sampling",
+    median: "statistics.html#week1-sampling",
+    percentile: "statistics.html#week1-sampling",
+    "standard deviation": "statistics.html#week1-sampling",
+    "standard error": "statistics.html#week1-sampling",
+    "confidence interval": "statistics.html#week1-sampling",
+    "抽样": "statistics.html#week1-sampling",
+    "样本": "statistics.html#week1-sampling",
+    "总体": "statistics.html#week1-sampling",
+    "均值": "statistics.html#week1-sampling",
+    "中位数": "statistics.html#week1-sampling",
+
+    correlation: "statistics.html#week2-correlation",
+    regression: "statistics.html#week2-correlation",
+    scatter: "statistics.html#week2-correlation",
+    prediction: "statistics.html#week2-correlation",
+    "r squared": "statistics.html#week2-correlation",
+    r2: "statistics.html#week2-correlation",
+    "相关": "statistics.html#week2-correlation",
+    "回归": "statistics.html#week2-correlation",
+    "预测": "statistics.html#week2-correlation",
+
+    inference: "statistics.html#week3-inference",
+    hypothesis: "statistics.html#week3-inference",
+    "hypothesis testing": "statistics.html#week3-inference",
+    "p-value": "statistics.html#week3-inference",
+    significance: "statistics.html#week3-inference",
+    "null hypothesis": "statistics.html#week3-inference",
+    "统计推断": "statistics.html#week3-inference",
+    "假设检验": "statistics.html#week3-inference",
+    "显著性": "statistics.html#week3-inference",
+    p值: "statistics.html#week3-inference",
+
+    causality: "statistics.html#week4-causality",
+    causation: "statistics.html#week4-causality",
+    confounding: "statistics.html#week4-causality",
+    confounder: "statistics.html#week4-causality",
+    experiment: "statistics.html#week4-causality",
+    rct: "statistics.html#week4-causality",
+    "reverse causality": "statistics.html#week4-causality",
+    "difference-in-differences": "statistics.html#week4-causality",
+    "因果": "statistics.html#week4-causality",
+    "混杂": "statistics.html#week4-causality",
+    "随机对照试验": "statistics.html#week4-causality",
+    "实验": "statistics.html#week4-causality",
+
+    residuals: "statistics.html#week5-residuals",
+    residual: "statistics.html#week5-residuals",
+    transform: "statistics.html#week5-residuals",
+    transformation: "statistics.html#week5-residuals",
+    interaction: "statistics.html#week5-residuals",
+    heteroskedasticity: "statistics.html#week5-residuals",
+    nonlinear: "statistics.html#week5-residuals",
+    "残差": "statistics.html#week5-residuals",
+    "变量变换": "statistics.html#week5-residuals",
+    "交互项": "statistics.html#week5-residuals",
+
+    logistic: "statistics.html#week6-logistic",
+    "logistic regression": "statistics.html#week6-logistic",
+    binary: "statistics.html#week6-logistic",
+    odds: "statistics.html#week6-logistic",
+    "odds ratio": "statistics.html#week6-logistic",
+    "risk ratio": "statistics.html#week6-logistic",
+    probability: "statistics.html#week6-logistic",
+    "逻辑回归": "statistics.html#week6-logistic",
+    "二分类": "statistics.html#week6-logistic",
+    "比值比": "statistics.html#week6-logistic",
+    "概率": "statistics.html#week6-logistic",
+
+    survival: "statistics.html#week7-survival",
+    censoring: "statistics.html#week7-survival",
+    "time to event": "statistics.html#week7-survival",
+    "discrete survival": "statistics.html#week7-survival",
+    relapse: "statistics.html#week7-survival",
+    "生存分析": "statistics.html#week7-survival",
+    "删失": "statistics.html#week7-survival",
+    "事件发生时间": "statistics.html#week7-survival",
+
+    visualisation: "statistics.html#week8-visualisation",
+    visualization: "statistics.html#week8-visualisation",
+    tableau: "statistics.html#week8-visualisation",
+    dashboard: "statistics.html#week8-visualisation",
+    histogram: "statistics.html#week8-visualisation",
+    "box plot": "statistics.html#week8-visualisation",
+    "line chart": "statistics.html#week8-visualisation",
+    dimension: "statistics.html#week8-visualisation",
+    measure: "statistics.html#week8-visualisation",
+    "数据可视化": "statistics.html#week8-visualisation",
+    "图表": "statistics.html#week8-visualisation",
+
+    "data science": "statistics.html#week9-datascience",
+    workflow: "statistics.html#week9-datascience",
+    insight: "statistics.html#week9-datascience",
+    prediction: "statistics.html#week9-datascience",
+    prescription: "statistics.html#week9-datascience",
+    "train test": "statistics.html#week9-datascience",
+    "no-show": "statistics.html#week9-datascience",
+    "数据科学": "statistics.html#week9-datascience",
+    "工作流": "statistics.html#week9-datascience",
+
+    "machine learning": "statistics.html#week10-ml",
+    "decision tree": "statistics.html#week10-ml",
+    "decision trees": "statistics.html#week10-ml",
+    "random forest": "statistics.html#week10-ml",
+    overfitting: "statistics.html#week10-ml",
+    interpretability: "statistics.html#week10-ml",
+    leakage: "statistics.html#week10-ml",
+    "机器学习": "statistics.html#week10-ml",
+    "决策树": "statistics.html#week10-ml",
+    "过拟合": "statistics.html#week10-ml",
+    "可解释性": "statistics.html#week10-ml"
+  };
+}
+
+function searchCourse() {
+  const input = document.getElementById("search");
+  if (!input) return;
+
+  const query = input.value.trim().toLowerCase();
+
+  if (!query) {
+    alert("Please enter a subject or keyword.");
+    return;
+  }
+
+  if (
+    query.includes("economics") ||
+    query.includes("econ") ||
+    query.includes("经济")
+  ) {
+    window.location.href = "economics.html";
+    return;
+  }
+
+  if (
+    query.includes("statistics") ||
+    query.includes("stats") ||
+    query.includes("statistic") ||
+    query.includes("统计")
+  ) {
+    window.location.href = "statistics.html";
+    return;
+  }
+
+  if (
+    query.includes("finance") ||
+    query.includes("accounting") ||
+    query.includes("fin") ||
+    query.includes("acc") ||
+    query.includes("金融") ||
+    query.includes("会计")
+  ) {
+    window.location.href = "accounting.html";
+    return;
+  }
+
+  const statisticsMap = getStatisticsKeywordMap();
+  for (const key in statisticsMap) {
+    if (query.includes(key)) {
+      window.location.href = statisticsMap[key];
+      return;
+    }
+  }
+
+  const economicsMap = getEconomicsKeywordMap();
   for (const key in economicsMap) {
     if (query.includes(key)) {
       window.location.href = economicsMap[key];
@@ -167,6 +411,7 @@ function showMainSection(sectionId, btn) {
 
 function showWeek(weekId, btn) {
   const allWeeks = document.querySelectorAll(".week-panel");
+
   allWeeks.forEach((week) => {
     week.style.display = "none";
   });
@@ -192,6 +437,8 @@ async function startQuiz() {
 
   const selectedCount = getSelectedQuizCount();
   const selectedMode = getSelectedFocusMode();
+  const userId = getOrCreateUserId();
+  const weakTopics = getLocalWeakTopics(CURRENT_TOPIC);
 
   quizContainer.innerHTML = `
     <div class="quiz-loading-card">
@@ -212,7 +459,9 @@ async function startQuiz() {
       body: JSON.stringify({
         topic: CURRENT_TOPIC,
         count: selectedCount,
-        focusMode: selectedMode
+        focusMode: selectedMode,
+        userId,
+        weakTopics
       })
     });
 
@@ -222,7 +471,11 @@ async function startQuiz() {
 
     const data = await response.json();
 
-    if (!data.questions || !Array.isArray(data.questions) || data.questions.length === 0) {
+    if (
+      !data.questions ||
+      !Array.isArray(data.questions) ||
+      data.questions.length === 0
+    ) {
       throw new Error("Invalid quiz response");
     }
 
@@ -230,6 +483,8 @@ async function startQuiz() {
     currentQuestionIndex = 0;
     currentScore = 0;
     questionLocked = false;
+    currentAttempts = [];
+    quizSessionSaved = false;
 
     renderQuestion();
   } catch (error) {
@@ -264,6 +519,12 @@ function renderQuestion() {
     `;
 
     quizMeta.innerText = `Finished · Score ${currentScore}/${currentQuiz.length}`;
+
+    if (!quizSessionSaved) {
+      quizSessionSaved = true;
+      saveQuizMemory();
+    }
+
     return;
   }
 
@@ -289,6 +550,11 @@ function renderQuestion() {
 
       <h3 class="quiz-question-title">${q.question || ""}</h3>
       <p class="quiz-question-zh">${q.questionZh || ""}</p>
+
+      <div class="quiz-tag-row">
+        <span class="quiz-mini-tag">${(q.concept || CURRENT_TOPIC)}</span>
+        <span class="quiz-mini-tag">${(q.difficulty || "medium")}</span>
+      </div>
 
       <div class="quiz-options" id="quizOptions">
         ${optionsHtml}
@@ -338,7 +604,16 @@ function selectAnswer(selectedKey) {
     }
   });
 
-  if (selectedKey === correctKey) {
+  const isCorrect = selectedKey === correctKey;
+
+  currentAttempts.push({
+    concept: q.concept || CURRENT_TOPIC,
+    isCorrect
+  });
+
+  updateLocalWeakTopic(CURRENT_TOPIC, q.concept || CURRENT_TOPIC, isCorrect);
+
+  if (isCorrect) {
     currentScore += 1;
 
     if (feedbackText) feedbackText.innerText = "Correct · 答对了";
@@ -347,7 +622,9 @@ function selectAnswer(selectedKey) {
       feedbackBadge.className = "feedback-badge correct-badge";
     }
   } else {
-    if (feedbackText) feedbackText.innerText = `Incorrect · 正确答案是 ${correctKey}`;
+    if (feedbackText) {
+      feedbackText.innerText = `Incorrect · 正确答案是 ${correctKey}`;
+    }
     if (feedbackBadge) {
       feedbackBadge.innerText = "✕";
       feedbackBadge.className = "feedback-badge wrong-badge";
@@ -373,11 +650,49 @@ function goNextQuestion() {
   renderQuestion();
 }
 
-function initHashNavigation() {
-  const hash = window.location.hash;
-  if (!hash) return;
+async function saveQuizMemory() {
+  try {
+    if (!currentAttempts.length) return;
 
-  const map = {
+    const userId = getOrCreateUserId();
+    const focusMode = getSelectedFocusMode();
+
+    await fetch("/api/quiz-memory", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        userId,
+        topic: CURRENT_TOPIC,
+        attempts: currentAttempts,
+        score: currentScore,
+        total: currentQuiz.length,
+        focusMode
+      })
+    });
+  } catch (error) {
+    console.error("Failed to save quiz memory:", error);
+  }
+}
+
+function getHashWeekMapByTopic() {
+  if (CURRENT_TOPIC === "statistics") {
+    return {
+      "#week1-sampling": "week1",
+      "#week2-correlation": "week2",
+      "#week3-inference": "week3",
+      "#week4-causality": "week4",
+      "#week5-residuals": "week5",
+      "#week6-logistic": "week6",
+      "#week7-survival": "week7",
+      "#week8-visualisation": "week8",
+      "#week9-datascience": "week9",
+      "#week10-ml": "week10"
+    };
+  }
+
+  return {
     "#week1-gdp": "week1",
     "#week2-cash": "week2",
     "#week3-supply": "week3",
@@ -390,8 +705,15 @@ function initHashNavigation() {
     "#week9-commons": "week9",
     "#week10-revision": "week10"
   };
+}
 
+function initHashNavigation() {
+  const hash = window.location.hash;
+  if (!hash) return;
+
+  const map = getHashWeekMapByTopic();
   const targetWeek = map[hash];
+
   if (!targetWeek) return;
 
   const weeklySection = document.getElementById("weeklySection");
@@ -461,6 +783,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 window.searchCourse = searchCourse;
+window.goToCourse = goToCourse;
 window.showMainSection = showMainSection;
 window.showWeek = showWeek;
 window.startQuiz = startQuiz;

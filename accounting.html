@@ -1,44 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Accounting</title>
+  <meta charset="UTF-8">
+  <title>Finance | Business & Health</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="accounting-page">
 
-<h1>Accounting</h1>
+  <div class="course-shell">
 
-<button class="tab-btn" onclick="showTab('weekly')">Weekly Review</button>
-<button class="tab-btn" onclick="showTab('practice')">AI Practice</button>
+    <div class="course-topbar">
+      <a href="index.html" class="mini-back">← Back to Home</a>
+      <span class="course-tag">Finance</span>
+    </div>
 
-<div id="weekly" class="content">
-  <h2>Week 1</h2>
-  <p>Financial Statements</p>
+    <section class="course-hero">
+      <div class="course-hero-badge">Finance / Accounting · Coming Soon</div>
+      <h1 class="course-title">Finance</h1>
+      <p class="course-subtitle">
+        Course page under construction
+        <br>
+        金融课程页面正在建设中
+      </p>
+    </section>
 
-  <h2>Week 2</h2>
-  <p>Double Entry System</p>
+    <section class="coming-soon-card">
+      <h2>Finance content is coming soon</h2>
+      <p>
+        This section is being prepared in the same style as Economics and Statistics.
+        For now, the homepage button is active so the site structure stays complete and clean.
+      </p>
+      <p>
+        这一部分后面会按照 Economics 和 Statistics 的同样风格继续补充。
+        目前先保留这个入口页，避免首页跳转时报错。
+      </p>
+    </section>
 
-  <h2>Week 3</h2>
-  <p>Cash Flow</p>
-</div>
+    <footer class="course-footer">
+      Built by Bucky Yue
+    </footer>
 
-<div id="practice" class="content" style="display:none;">
-  <button onclick="generateQuestion()">Generate Question</button>
-  <p id="question"></p>
-</div>
+  </div>
 
-<script>
-function showTab(tab) {
-  document.getElementById("weekly").style.display = "none";
-  document.getElementById("practice").style.display = "none";
-  document.getElementById(tab).style.display = "block";
-}
-
-function generateQuestion() {
-  document.getElementById("question").innerText =
-    "What is double-entry accounting?";
-}
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>

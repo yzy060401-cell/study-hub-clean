@@ -1,44 +1,699 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Statistics</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistics | Business & Health</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="econ-page">
 
-<h1>Statistics</h1>
+  <div class="course-shell">
 
-<button class="tab-btn" onclick="showTab('weekly')">Weekly Review</button>
-<button class="tab-btn" onclick="showTab('practice')">AI Practice</button>
+    <div class="course-topbar">
+      <a href="index.html" class="mini-back">← Back to Home</a>
+      <span class="course-tag">Statistics</span>
+    </div>
 
-<div id="weekly" class="content">
-  <h2>Week 1</h2>
-  <p>Descriptive Statistics</p>
+    <section class="course-hero">
+      <div class="course-hero-badge">GBSH0050 · Introduction to Statistics and Data Insights</div>
+      <h1 class="course-title">Statistics</h1>
+      <p class="course-subtitle">
+        Weekly Review + AI Practice
+        <br />
+        课程周复习 + AI练题
+      </p>
+    </section>
 
-  <h2>Week 2</h2>
-  <p>Probability</p>
+    <section class="course-main-nav">
+      <button class="course-nav-btn active-nav" onclick="showMainSection('weeklySection', this)">Weekly Review</button>
+      <button class="course-nav-btn" onclick="showMainSection('practiceSection', this)">AI Practice</button>
+    </section>
 
-  <h2>Week 3</h2>
-  <p>Regression</p>
-</div>
+    <!-- WEEKLY REVIEW -->
+    <section id="weeklySection" class="main-section">
 
-<div id="practice" class="content" style="display:none;">
-  <button onclick="generateQuestion()">Generate Question</button>
-  <p id="question"></p>
-</div>
+      <div class="section-intro-card">
+        <h2>Weekly Review</h2>
+        <p>
+          Choose a week below to review key concepts, model logic, and exam-focused takeaways.
+          <br />
+          选择下方周次，查看核心概念、模型逻辑和考试重点。
+        </p>
+      </div>
 
-<script>
-function showTab(tab) {
-  document.getElementById("weekly").style.display = "none";
-  document.getElementById("practice").style.display = "none";
-  document.getElementById(tab).style.display = "block";
-}
+      <div class="week-grid">
+        <button class="week-chip active-week" onclick="showWeek('week1', this)">Week 1</button>
+        <button class="week-chip" onclick="showWeek('week2', this)">Week 2</button>
+        <button class="week-chip" onclick="showWeek('week3', this)">Week 3</button>
+        <button class="week-chip" onclick="showWeek('week4', this)">Week 4</button>
+        <button class="week-chip" onclick="showWeek('week5', this)">Week 5</button>
+        <button class="week-chip" onclick="showWeek('week6', this)">Week 6</button>
+        <button class="week-chip" onclick="showWeek('week7', this)">Week 7</button>
+        <button class="week-chip" onclick="showWeek('week8', this)">Week 8</button>
+        <button class="week-chip" onclick="showWeek('week9', this)">Week 9</button>
+        <button class="week-chip" onclick="showWeek('week10', this)">Week 10</button>
+      </div>
 
-function generateQuestion() {
-  document.getElementById("question").innerText =
-    "What is mean and standard deviation?";
-}
-</script>
+      <!-- WEEK 1 -->
+      <div id="week1" class="week-panel" style="display:block;">
+        <div id="week1-sampling"></div>
 
+        <div class="week-header-card">
+          <div class="week-label">Week 1</div>
+          <h2>Sampling & Describing Data</h2>
+          <p>抽样与描述数据</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Population and sample ｜ 总体与样本</li>
+              <li>Statistic and parameter ｜ 统计量与总体参数</li>
+              <li>Mean and median ｜ 均值与中位数</li>
+              <li>Percentiles ｜ 百分位数</li>
+              <li>Standard deviation ｜ 标准差</li>
+              <li>Standard error ｜ 标准误</li>
+              <li>95% confidence interval ｜ 95% 置信区间</li>
+              <li>Sampling bias ｜ 抽样偏差</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>We usually want to learn about a population, but in practice we only observe a sample. ｜ 我们通常想了解总体，但实际中只能观察样本。</li>
+              <li>A sample statistic is used to estimate an unknown population value. ｜ 样本统计量用于估计未知的总体参数。</li>
+              <li>Uncertainty remains because different random samples would produce slightly different answers. ｜ 由于不同随机样本会给出不同结果，所以估计总带有不确定性。</li>
+              <li>Bigger samples often reduce random uncertainty, but they do not automatically fix bad sampling. ｜ 更大的样本通常能降低随机误差，但不能自动修复错误抽样。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Standard deviation describes spread in the data. ｜ 标准差描述数据本身的离散程度。</li>
+              <li>Standard error describes uncertainty in the sample estimate. ｜ 标准误描述样本估计值的不确定性。</li>
+              <li>Mean is sensitive to extreme values; median is often more robust. ｜ 均值更容易受极端值影响，中位数通常更稳健。</li>
+              <li>A random-looking collection is not necessarily a valid random sample. ｜ 看起来“随便拿的”数据，并不等于真正的随机抽样。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              In Week 1, a strong answer does not just define mean or confidence interval.
+              It explains whether the sample is suitable for answering the question in the first place.
+            </p>
+            <p>
+              第1周的好答案不只是定义均值或置信区间，
+              而是先判断这个样本本身是否适合回答题目中的问题。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 2 -->
+      <div id="week2" class="week-panel">
+        <div id="week2-correlation"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 2</div>
+          <h2>Correlation, Regression & Prediction</h2>
+          <p>相关、回归与预测</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Correlation coefficient ｜ 相关系数</li>
+              <li>Scatter plot ｜ 散点图</li>
+              <li>Regression line ｜ 回归线</li>
+              <li>Slope coefficient ｜ 斜率系数</li>
+              <li>Intercept ｜ 截距</li>
+              <li>R² ｜ 判定系数</li>
+              <li>Prediction ｜ 预测</li>
+              <li>Outlier ｜ 离群值</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Correlation tells us whether two variables move together. ｜ 相关性告诉我们两个变量是否一起变化。</li>
+              <li>Regression adds a predictive model and estimates the average relationship between X and Y. ｜ 回归进一步建立预测模型，估计 X 与 Y 的平均关系。</li>
+              <li>R² measures how much variation in the outcome is explained by the predictor in the model. ｜ R² 衡量模型中的解释变量解释了结果变量多少变异。</li>
+              <li>Good analysis should start with plotting the data, not jumping straight to output tables. ｜ 好的分析应先看图，而不是直接跳到回归结果表。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Correlation is not the same as causation. ｜ 相关不等于因果。</li>
+              <li>A significant slope does not prove an intervention would work. ｜ 斜率显著不代表干预一定有效。</li>
+              <li>Prediction quality and causal interpretation are different questions. ｜ 预测能力和因果解释是两类不同问题。</li>
+              <li>Extrapolating far beyond the observed data is risky. ｜ 超出样本范围过多地外推是有风险的。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              When interpreting a regression, mention direction, size, uncertainty, and fit.
+              Do not only say whether the coefficient is positive or negative.
+            </p>
+            <p>
+              解释回归结果时，要同时谈方向、大小、不确定性和拟合度，
+              不要只说系数是正还是负。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 3 -->
+      <div id="week3" class="week-panel">
+        <div id="week3-inference"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 3</div>
+          <h2>Inference & Hypothesis Testing</h2>
+          <p>统计推断与假设检验</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Null hypothesis ｜ 原假设</li>
+              <li>Alternative hypothesis ｜ 备择假设</li>
+              <li>p-value ｜ p值</li>
+              <li>Statistical significance ｜ 统计显著性</li>
+              <li>Confidence interval ｜ 置信区间</li>
+              <li>Standard error ｜ 标准误</li>
+              <li>Difference in means ｜ 均值差异</li>
+              <li>Evidence vs noise ｜ 证据与随机波动</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Inference uses sample data to say something about a wider population. ｜ 推断统计用样本去推测更大的总体。</li>
+              <li>Hypothesis testing asks whether an observed difference could plausibly be due to chance alone. ｜ 假设检验判断观察到的差异是否可能只是随机波动造成。</li>
+              <li>Confidence intervals help show both uncertainty and the range of plausible values. ｜ 置信区间同时展示不确定性和可能的数值范围。</li>
+              <li>Statistical decision-making is about uncertainty, not certainty. ｜ 统计决策处理的是不确定性，而不是绝对确定。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Statistically significant does not automatically mean practically important. ｜ 统计显著不自动等于现实意义很大。</li>
+              <li>A p-value is not the probability that the null hypothesis is true. ｜ p值并不是“原假设为真”的概率。</li>
+              <li>Rejecting the null is not the same as proving a theory forever. ｜ 拒绝原假设不等于永久证明某个理论。</li>
+              <li>Wide intervals mean high uncertainty even when point estimates look interesting. ｜ 即使点估计看起来很显眼，区间很宽仍说明不确定性高。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              A strong inference answer explains what the interval or p-value means in context,
+              instead of treating significance as a magic yes-or-no stamp.
+            </p>
+            <p>
+              好的推断题答案会结合情境解释 p 值或置信区间的含义，
+              而不是把“显著”当成机械的二元判断。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 4 -->
+      <div id="week4" class="week-panel">
+        <div id="week4-causality"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 4</div>
+          <h2>Causality, Confounding & Experimentation</h2>
+          <p>因果、混杂与实验设计</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Causality ｜ 因果关系</li>
+              <li>Confounding ｜ 混杂因素</li>
+              <li>Reverse causality ｜ 反向因果</li>
+              <li>Omitted variable ｜ 遗漏变量</li>
+              <li>Randomised controlled trial ｜ 随机对照试验</li>
+              <li>Treatment and control ｜ 处理组与对照组</li>
+              <li>Experimentation ｜ 实验设计</li>
+              <li>Identification ｜ 因果识别</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Observing that X and Y move together does not tell us whether X causes Y. ｜ 观察到 X 与 Y 一起变化，并不能说明 X 导致 Y。</li>
+              <li>Confounders can create misleading relationships by affecting both variables. ｜ 混杂变量会同时影响两者，从而制造误导性的关系。</li>
+              <li>Reverse causality means the direction of cause may run the other way. ｜ 反向因果意味着真正的因果方向可能相反。</li>
+              <li>Randomisation helps balance hidden factors and makes causal claims more credible. ｜ 随机化有助于平衡隐藏因素，使因果推断更可信。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Controlling for more variables is not always the same as identifying causality. ｜ 控制更多变量并不等于真的识别了因果。</li>
+              <li>Prediction models and causal models answer different questions. ｜ 预测模型和因果模型回答的是不同问题。</li>
+              <li>An experiment estimates what happened because of the intervention, not just what happened after it. ｜ 实验估计的是“因为干预而发生了什么”，而不只是“干预后发生了什么”。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              In Week 4, always ask: what is the counterfactual?
+              In other words, what would have happened without the treatment?
+            </p>
+            <p>
+              第4周做题时一定要问：
+              反事实是什么？也就是如果没有这个干预，本来会发生什么？
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 5 -->
+      <div id="week5" class="week-panel">
+        <div id="week5-residuals"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 5</div>
+          <h2>Residuals, Transformations & Interaction Effects</h2>
+          <p>残差、变量变换与交互效应</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Residuals ｜ 残差</li>
+              <li>Fitted values ｜ 拟合值</li>
+              <li>Nonlinearity ｜ 非线性</li>
+              <li>Transformation ｜ 变量变换</li>
+              <li>Homoskedasticity ｜ 同方差性</li>
+              <li>Heteroskedasticity ｜ 异方差性</li>
+              <li>Interaction term ｜ 交互项</li>
+              <li>Effect modification ｜ 效应修饰</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Residuals help us check whether a linear model is missing important structure. ｜ 残差可以帮助我们检查线性模型是否遗漏了重要结构。</li>
+              <li>A curved residual pattern often signals that the model form is wrong. ｜ 残差出现明显弯曲，往往意味着模型形式不对。</li>
+              <li>Transforming variables can make relationships easier to model. ｜ 对变量做变换有时能让关系更适合建模。</li>
+              <li>Interaction terms allow one variable’s effect to depend on another variable. ｜ 交互项允许一个变量的影响取决于另一个变量。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Confounding and effect modification are not the same. ｜ 混杂和效应修饰不是一回事。</li>
+              <li>Noise around the line is normal; a systematic pattern in residuals is more serious. ｜ 拟合线周围有随机噪音是正常的，但残差出现系统性模式更值得警惕。</li>
+              <li>Better fit is not just about higher R²; the model also needs to make sense diagnostically. ｜ 更好的拟合不只是更高的 R²，还要诊断上说得通。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              If a question shows residual plots, do not ignore them.
+              They are usually telling you whether the chosen model is appropriate.
+            </p>
+            <p>
+              如果题目给了残差图，不要忽略。
+              它往往就是在告诉你当前模型到底合不合适。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 6 -->
+      <div id="week6" class="week-panel">
+        <div id="week6-logistic"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 6</div>
+          <h2>Logistic Regression & Binary Outcomes</h2>
+          <p>Logistic 回归与二元结果变量</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Binary outcome ｜ 二元结果</li>
+              <li>Probability ｜ 概率</li>
+              <li>Odds ｜ 胜算</li>
+              <li>Odds ratio ｜ 胜算比</li>
+              <li>Risk and risk ratio ｜ 风险与风险比</li>
+              <li>Logistic regression ｜ Logistic 回归</li>
+              <li>Threshold ｜ 判定阈值</li>
+              <li>Classification ｜ 分类</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>When the outcome is yes/no, linear regression is usually not the best model. ｜ 当结果变量只有是/否时，线性回归通常不是最合适的模型。</li>
+              <li>Logistic regression models the probability of an event while keeping predicted values between 0 and 1. ｜ Logistic 回归建模的是事件发生概率，并保证预测值在 0 到 1 之间。</li>
+              <li>Binary outcomes are common in health research, such as recurrence, success, or disease status. ｜ 医疗研究中二元结果很常见，例如复发、成功、是否患病。</li>
+              <li>Interpretation needs care because odds and probabilities are related but not identical. ｜ 解释时要小心，因为胜算和概率有关，但并不相同。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Probability is not the same as odds. ｜ 概率不等于胜算。</li>
+              <li>Odds ratio is not the same as risk ratio. ｜ 胜算比不等于风险比。</li>
+              <li>Using the correct model depends on the outcome type, not personal preference. ｜ 选模型应根据结果变量类型，而不是个人偏好。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              In Week 6, one of the most common marks is for simply identifying the right model from the outcome variable type.
+            </p>
+            <p>
+              第6周最常见的得分点之一，
+              就是先根据结果变量的类型识别出正确的统计模型。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 7 -->
+      <div id="week7" class="week-panel">
+        <div id="week7-survival"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 7</div>
+          <h2>Survival Analysis</h2>
+          <p>生存分析 / 时间到事件分析</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Time-to-event data ｜ 时间到事件数据</li>
+              <li>Event ｜ 事件</li>
+              <li>Censoring ｜ 删失</li>
+              <li>Survival probability ｜ 生存概率</li>
+              <li>Survival curve ｜ 生存曲线</li>
+              <li>Risk set ｜ 风险集</li>
+              <li>Discrete-time survival model ｜ 离散时间生存模型</li>
+              <li>Follow-up ｜ 随访</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>For survival data, timing matters, not just whether the event happened. ｜ 对生存数据来说，不只是事件是否发生，发生的时间也很重要。</li>
+              <li>Censored observations still contain useful information up to the point they leave observation. ｜ 被删失的个体在退出观察之前仍然提供了有用信息。</li>
+              <li>Survival methods are designed for unequal follow-up and incomplete event timing. ｜ 生存分析就是为不等长随访和不完整事件时间而设计的。</li>
+              <li>The unit of analysis often changes when preparing data for survival models. ｜ 为生存模型整理数据时，分析单位常常会发生变化。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Binary outcome analysis ignores timing; survival analysis uses timing. ｜ 二元结果分析忽略时间信息，而生存分析会利用时间信息。</li>
+              <li>Censoring does not mean “nothing happened”; it means the event time is not fully observed. ｜ 删失不代表“什么都没发生”，而是事件时间没有被完整观察到。</li>
+              <li>Dropping censored cases can seriously bias analysis. ｜ 直接删掉删失个体会严重偏倚分析。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              In Week 7, always check whether the question is really about a binary outcome or about time until an outcome.
+            </p>
+            <p>
+              第7周做题时一定要先判断：
+              题目问的是一个二元结果，还是“多久之后发生结果”。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 8 -->
+      <div id="week8" class="week-panel">
+        <div id="week8-visualisation"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 8</div>
+          <h2>Data Visualisation & Tableau Thinking</h2>
+          <p>数据可视化与 Tableau 思维</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Data visualisation ｜ 数据可视化</li>
+              <li>Chart choice ｜ 图表选择</li>
+              <li>Dimension and measure ｜ 维度与度量</li>
+              <li>Line chart ｜ 折线图</li>
+              <li>Histogram ｜ 直方图</li>
+              <li>Box plot ｜ 箱线图</li>
+              <li>Dashboard ｜ 仪表板</li>
+              <li>Storytelling ｜ 数据讲故事</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Good visualisation helps people think, compare, and decide. ｜ 好的可视化能帮助人理解、比较和做决策。</li>
+              <li>Different charts answer different questions, such as trend, distribution, or comparison. ｜ 不同图表适合回答不同问题，例如趋势、分布或比较。</li>
+              <li>Visual design should support interpretation rather than distract from it. ｜ 图形设计应服务于解释，而不是喧宾夺主。</li>
+              <li>Tableau work is not only technical; it is also about communication. ｜ Tableau 不只是技术操作，也涉及表达与沟通。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>A chart can look attractive but still be misleading. ｜ 图表可以看起来很漂亮，但依然可能误导。</li>
+              <li>Exploration and presentation are related but not identical goals. ｜ 数据探索与最终展示有关联，但目标并不完全一样。</li>
+              <li>Choosing the wrong chart can hide the most important pattern. ｜ 选错图表可能会掩盖最重要的模式。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              In Week 8, a common question is not “which chart do you like” but “which chart best matches the analytical goal.”
+            </p>
+            <p>
+              第8周常考的不是“你喜欢哪个图”，
+              而是“哪个图最适合当前的分析目标”。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 9 -->
+      <div id="week9" class="week-panel">
+        <div id="week9-datascience"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 9</div>
+          <h2>Introduction to Data Science</h2>
+          <p>数据科学导论</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Data science pipeline ｜ 数据科学流程</li>
+              <li>Insight ｜ 数据洞察</li>
+              <li>Prediction ｜ 预测</li>
+              <li>Prescription ｜ 决策建议</li>
+              <li>Features and label ｜ 特征与标签</li>
+              <li>Train / test split ｜ 训练集 / 测试集</li>
+              <li>Data leakage ｜ 数据泄漏</li>
+              <li>Baseline ｜ 基线模型</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>Data science turns raw records into insights, predictions, and actions. ｜ 数据科学把原始记录转化为洞察、预测和行动。</li>
+              <li>Earlier statistical ideas still matter: uncertainty, modelling, and careful interpretation. ｜ 前面学过的统计思想依然重要，比如不确定性、建模和谨慎解释。</li>
+              <li>Model performance should be judged on unseen data, not only on the training sample. ｜ 模型表现应在未见过的数据上评估，而不只是训练样本内。</li>
+              <li>The goal is usually decision support, not prediction for its own sake. ｜ 最终目标通常是支持决策，而不是为了预测而预测。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>Prediction is not the same as explanation. ｜ 预测不等于解释。</li>
+              <li>Prediction is not the same as causality. ｜ 预测不等于因果。</li>
+              <li>A model that memorises training data may fail in real-world use. ｜ 只会记住训练数据的模型，到了真实场景可能会失败。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              Week 9 often rewards students who can connect old statistics ideas to the broader data science workflow.
+            </p>
+            <p>
+              第9周常奖励那些能把前面的统计知识
+              与更完整的数据科学流程连接起来的学生。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 10 -->
+      <div id="week10" class="week-panel">
+        <div id="week10-ml"></div>
+
+        <div class="week-header-card">
+          <div class="week-label">Week 10</div>
+          <h2>Machine Learning, Decision Trees & Interpretability</h2>
+          <p>机器学习、决策树与可解释性</p>
+        </div>
+
+        <div class="content-grid">
+          <div class="info-card">
+            <h3>Key Concepts</h3>
+            <ul>
+              <li>Machine learning ｜ 机器学习</li>
+              <li>Decision tree ｜ 决策树</li>
+              <li>Split ｜ 分裂规则</li>
+              <li>Node and leaf ｜ 节点与叶节点</li>
+              <li>Overfitting ｜ 过拟合</li>
+              <li>Depth ｜ 树深度</li>
+              <li>Interpretability ｜ 可解释性</li>
+              <li>Random forest ｜ 随机森林</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Core Logic</h3>
+            <ul>
+              <li>A decision tree predicts using a sequence of if-then rules. ｜ 决策树通过一连串 if-then 规则进行预测。</li>
+              <li>Trees are attractive because they are relatively easy to explain to non-technical audiences. ｜ 决策树的优势之一是相对容易向非技术受众解释。</li>
+              <li>Very deep trees can fit training data too closely and perform poorly on new data. ｜ 过深的树会过度贴合训练数据，在新数据上反而表现变差。</li>
+              <li>Interpretability matters when models are used in health and management decisions. ｜ 当模型用于医疗和管理决策时，可解释性非常重要。</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Important Distinction</h3>
+            <ul>
+              <li>A predictive rule is not a causal rule. ｜ 预测规则不等于因果规则。</li>
+              <li>A more flexible model is not always a better model for communication or governance. ｜ 更灵活的模型并不一定更适合沟通或治理。</li>
+              <li>Readable models can still be wrong if trained badly or evaluated badly. ｜ 就算模型很“可读”，训练和评估做不好也照样会错。</li>
+            </ul>
+          </div>
+
+          <div class="info-card highlight-card">
+            <h3>Exam Thinking</h3>
+            <p>
+              In Week 10, do not describe a tree rule as proof that changing a variable will change the outcome.
+            </p>
+            <p>
+              第10周做题时，不要把决策树中的规则
+              误写成“改变这个变量就一定会改变结果”的因果证明。
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- AI PRACTICE -->
+    <section id="practiceSection" class="main-section" style="display:none;">
+      <div class="section-intro-card">
+        <h2>AI Practice</h2>
+        <p>
+          Generate 10, 20, 50, or 100 Statistics questions with instant feedback and adaptive personalisation.
+          <br />
+          生成 10、20、50 或 100 道统计学练习题，并根据你的薄弱点进行强化。
+        </p>
+        <div id="memoryHint" class="quiz-subhint">
+          Adaptive mode is on. Local weak-topic tracking works automatically. If MEM0 is connected on the server, long-term personalisation will also be used.
+          <br />
+          自适应练题已开启。浏览器会自动记录你的薄弱点；如果服务器接入了 Mem0，还会启用长期个性化强化。
+        </div>
+      </div>
+
+      <div class="practice-card">
+        <div class="quiz-control-row">
+          <div class="quiz-control-group">
+            <label for="quizCount">Question Count</label>
+            <select id="quizCount" class="quiz-select">
+              <option value="10" selected>10 Questions</option>
+              <option value="20">20 Questions</option>
+              <option value="50">50 Questions</option>
+              <option value="100">100 Questions</option>
+            </select>
+          </div>
+
+          <div class="quiz-control-group">
+            <label for="focusMode">Quiz Mode</label>
+            <select id="focusMode" class="quiz-select">
+              <option value="balanced" selected>Balanced Mix</option>
+              <option value="weak">Focus Weak Areas</option>
+              <option value="random">More Random</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="quiz-topbar">
+          <button id="generateQuizBtn" class="generate-btn" onclick="startQuiz()">Generate Quiz</button>
+          <div id="quizMeta" class="quiz-meta">Ready to practise · 准备开始练习</div>
+        </div>
+
+        <div id="quizContainer" class="quiz-container">
+          <div class="quiz-empty-state">
+            <div class="quiz-empty-icon">◎</div>
+            <p>Choose your quiz size and click the button to generate a new set.</p>
+            <p>选择题目数量后点击按钮，生成一套新的练习题。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="course-footer">
+      Built by Bucky Yue
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

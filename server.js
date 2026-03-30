@@ -25,6 +25,7 @@ const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
 const MEM0_API_KEY = process.env.MEM0_API_KEY || "";
 const MEM0_BASE_URL = process.env.MEM0_BASE_URL || "https://api.mem0.ai";
 const MEM0_APP_ID = process.env.MEM0_APP_ID || "ucl-study-hub";
+
 const MAX_QUIZ_COUNT = 100;
 const DEFAULT_BATCH_SIZE = 20;
 
@@ -88,30 +89,92 @@ const COURSE_BLUEPRINTS = {
       "willingness to pay"
     ]
   },
+
   statistics: {
     displayName: "Statistics",
     audience:
-      "first-year undergraduate students studying statistics for applied health and business modules",
+      "first-year undergraduate students studying introductory statistics and data insights in health and business",
     systemContext:
-      "Focus on introductory statistics, interpretation, and study design.",
+      "Focus on UCL-style first-year statistics revision. Questions should emphasise method choice, interpretation of statistical output, causal reasoning, and practical data literacy rather than heavy formula memorisation.",
     concepts: [
+      "sampling",
+      "population",
+      "sample",
+      "random sample",
+      "sampling bias",
       "mean",
       "median",
-      "mode",
+      "percentile",
       "standard deviation",
-      "variance",
-      "correlation",
-      "regression",
-      "p-value",
+      "standard error",
       "confidence interval",
-      "hypothesis testing",
-      "RCT",
-      "independent variable",
-      "dependent variable",
+      "descriptive statistics",
+      "correlation",
+      "linear regression",
+      "scatter plot",
+      "slope coefficient",
+      "intercept",
+      "R squared",
+      "prediction",
+      "inference",
+      "null hypothesis",
+      "alternative hypothesis",
+      "p-value",
+      "statistical significance",
+      "causality",
       "confounding",
-      "causality"
+      "reverse causality",
+      "omitted variable bias",
+      "RCT",
+      "experimentation",
+      "difference-in-differences",
+      "residuals",
+      "fitted values",
+      "heteroskedasticity",
+      "nonlinear relationship",
+      "variable transformation",
+      "interaction effect",
+      "effect modification",
+      "logistic regression",
+      "binary outcome",
+      "odds",
+      "odds ratio",
+      "risk difference",
+      "risk ratio",
+      "predicted probability",
+      "classification threshold",
+      "survival analysis",
+      "time-to-event data",
+      "censoring",
+      "survival curve",
+      "discrete-time survival model",
+      "data visualisation",
+      "Tableau",
+      "dimension",
+      "measure",
+      "histogram",
+      "box plot",
+      "line chart",
+      "dashboard",
+      "data science workflow",
+      "raw data",
+      "insight",
+      "prediction",
+      "prescription",
+      "train-test split",
+      "baseline model",
+      "data leakage",
+      "no-show prediction",
+      "machine learning",
+      "decision tree",
+      "split",
+      "leaf node",
+      "overfitting",
+      "interpretability",
+      "random forest"
     ]
   },
+
   accounting: {
     displayName: "Accounting and Finance",
     audience:
@@ -136,28 +199,25 @@ const COURSE_BLUEPRINTS = {
 
 function clampQuizCount(value) {
   const parsed = Number(value);
+
   if (!Number.isFinite(parsed)) return 10;
   return Math.max(1, Math.min(MAX_QUIZ_COUNT, Math.floor(parsed)));
 }
 
 function shuffleArray(input) {
   const arr = [...input];
+
   for (let i = arr.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
+
   return arr;
 }
 
 function cleanText(value) {
   if (value === undefined || value === null) return "";
   return String(value).trim();
-}
-
-function capitalize(value) {
-  const text = cleanText(value);
-  if (!text) return "";
-  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 function extractJsonPayload(text) {
@@ -177,7 +237,7 @@ function extractJsonPayload(text) {
   return raw.slice(firstBrace, lastBrace + 1);
 }
 
-function normalizeQuestion(rawQuestion, index, fallbackConcept = "economics") {
+function normalizeQuestion(rawQuestion, index, fallbackConcept = "general") {
   const letters = ["A", "B", "C", "D"];
   const rawOptions = Array.isArray(rawQuestion?.options) ? rawQuestion.options : [];
 
@@ -254,11 +314,27 @@ function dedupeQuestions(questions) {
   return unique;
 }
 
+function dedupeTextList(items) {
+  const seen = new Set();
+  const result = [];
+
+  for (const item of items) {
+    const normalized = cleanText(item).toLowerCase();
+    if (!normalized || seen.has(normalized)) continue;
+
+    seen.add(normalized);
+    result.push(cleanText(item));
+  }
+
+  return result;
+}
+
 function tallyConcepts(attempts = []) {
   const map = {};
 
   for (const attempt of attempts) {
     const concept = cleanText(attempt?.concept || "general");
+
     if (!map[concept]) {
       map[concept] = { correct: 0, incorrect: 0 };
     }
@@ -293,9 +369,7 @@ function summarizeConceptPerformance(attempts = []) {
 }
 
 async function mem0Request(endpoint, payload) {
-  if (!MEM0_API_KEY) {
-    return null;
-  }
+  if (!MEM0_API_KEY) return null;
 
   const response = await fetch(`${MEM0_BASE_URL}${endpoint}`, {
     method: "POST",
@@ -406,7 +480,12 @@ async function addMem0QuizMemory({ userId, topic, messages, metadata = {} }) {
   }
 }
 
-function buildConceptTargets(blueprint, weakTopics = [], requestedAmount = 12, focusMode = "balanced") {
+function buildConceptTargets(
+  blueprint,
+  weakTopics = [],
+  requestedAmount = 12,
+  focusMode = "balanced"
+) {
   const baseConcepts = shuffleArray(blueprint.concepts || []);
   const weakConcepts = weakTopics
     .map((item) => cleanText(item?.concept))
@@ -415,11 +494,7 @@ function buildConceptTargets(blueprint, weakTopics = [], requestedAmount = 12, f
   let combined = [...baseConcepts];
 
   if (focusMode === "weak" && weakConcepts.length) {
-    combined = shuffleArray([
-      ...weakConcepts,
-      ...weakConcepts,
-      ...baseConcepts
-    ]);
+    combined = shuffleArray([...weakConcepts, ...baseConcepts]);
   }
 
   if (focusMode === "random") {
@@ -427,20 +502,6 @@ function buildConceptTargets(blueprint, weakTopics = [], requestedAmount = 12, f
   }
 
   return dedupeTextList(combined).slice(0, requestedAmount);
-}
-
-function dedupeTextList(items) {
-  const seen = new Set();
-  const result = [];
-
-  for (const item of items) {
-    const normalized = cleanText(item).toLowerCase();
-    if (!normalized || seen.has(normalized)) continue;
-    seen.add(normalized);
-    result.push(cleanText(item));
-  }
-
-  return result;
 }
 
 function buildMemorySummary(memories = []) {
@@ -462,6 +523,7 @@ async function generateQuizBatch({
   batchIndex = 0
 }) {
   const blueprint = COURSE_BLUEPRINTS[topic] || COURSE_BLUEPRINTS.economics;
+
   const conceptTargets = buildConceptTargets(
     blueprint,
     weakTopics,
@@ -533,9 +595,11 @@ Rules:
 5. Difficulty must be only easy, medium, or hard.
 6. Make the options plausible.
 7. Include a good mix of direct concept questions and short applied questions.
-8. Keep the English natural and student-friendly.
-9. Keep the Chinese concise.
-10. This is batch ${batchIndex + 1}, so make it feel fresh and non-repetitive.
+8. For statistics, include method-choice and interpretation questions where appropriate.
+9. Keep the English natural and student-friendly.
+10. Keep the Chinese concise.
+11. Never include markdown fences or commentary.
+12. This is batch ${batchIndex + 1}, so make it feel fresh and non-repetitive.
 `;
 
   const completion = await openai.chat.completions.create({
@@ -586,9 +650,10 @@ async function generateAdaptiveQuiz({
   });
 
   const memorySummary = buildMemorySummary(mem0Context.memories);
+
   let questions = [];
   let attempts = 0;
-  const maxAttempts = Math.max(5, Math.ceil(safeCount / 10) + 4);
+  const maxAttempts = Math.max(6, Math.ceil(safeCount / 10) + 5);
 
   while (questions.length < safeCount && attempts < maxAttempts) {
     const remaining = safeCount - questions.length;
